@@ -327,6 +327,8 @@ public class LYXHeroObject : LYXBehaviour
             return;
         }
         LYXSkillEffects effects = LYXSkillEffects.CreateEffects(entity.SkillPath, parent);
+        if (mHeroEnity.FriendAndFoe == 2)
+            effects.SetEffectRotation(new Vector3(0, -180, 0));
         effects.mSkillEntity = entity;
         // 得到播放特效的函数
         LYXSkillEffects.SkillFun fun = LYXSkillEffects.GetSkillFun("Effect" + effectId);

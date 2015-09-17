@@ -131,6 +131,7 @@ public class LYXUIHeroObject : LYXBehaviour
     /// <param name="isPause"></param>
     public void OnUiPause(bool isPause)
     {
+        if (_heroEntity == null || _heroEntity.IsHeroDie) return;
         if (mTweenRota != null && isHasTween) mTweenRota.enabled = !isPause;
         isUiPasue = isPause;
     }
