@@ -76,6 +76,7 @@
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXUIBattle.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXUIHeroObject.cs" />
     <Compile Include="Assets\MonoScripts\LYXCommon\LYXCompHelper.cs" />
+    <Compile Include="Assets\MonoScripts\LYXComponent\LYXAdaptiveScene.cs" />
     <Compile Include="Assets\MonoScripts\LYXComponent\LYXArcTweener.cs" />
     <Compile Include="Assets\MonoScripts\LYXComponent\LYXBehaviour.cs" />
     <Compile Include="Assets\MonoScripts\LYXComponent\LYXClickEffect.cs" />

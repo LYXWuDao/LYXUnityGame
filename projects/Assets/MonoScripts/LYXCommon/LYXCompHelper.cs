@@ -148,6 +148,25 @@ public class LYXCompHelper
     }
 
     /// <summary>
+    /// 获得屏幕的高和宽
+    /// </summary>
+    /// <param name="isNgui">是否需要判读 ngui </param>
+    /// <returns></returns>
+    public static Vector2 SceneWidthAndHeight(bool isNgui)
+    {
+        Vector2 vect = new Vector2(Screen.width, Screen.height);
+        UIRoot root = GameObject.FindObjectOfType<UIRoot>();
+        if (root != null && isNgui)
+        {
+            float s = (float)root.activeHeight / Screen.height;
+            int height = Mathf.CeilToInt(Screen.height * s);
+            int width = Mathf.CeilToInt(Screen.width * s);
+            vect = new Vector2(width, height);
+        }
+        return vect;
+    }
+
+    /// <summary>
     /// 计算粒子播放的时长
     /// </summary>
     /// <param name="transform"></param>
