@@ -150,13 +150,12 @@ public class LYXCompHelper
     /// <summary>
     /// 获得屏幕的高和宽
     /// </summary>
-    /// <param name="isNgui">是否需要判读 ngui </param>
     /// <returns></returns>
-    public static Vector2 SceneWidthAndHeight(bool isNgui)
+    public static Vector2 SceneWidthAndHeight()
     {
         Vector2 vect = new Vector2(Screen.width, Screen.height);
         UIRoot root = GameObject.FindObjectOfType<UIRoot>();
-        if (root != null && isNgui)
+        if (root != null)
         {
             float s = (float)root.activeHeight / Screen.height;
             int height = Mathf.CeilToInt(Screen.height * s);

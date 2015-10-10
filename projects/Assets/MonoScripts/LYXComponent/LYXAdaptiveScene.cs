@@ -45,32 +45,33 @@ public class LYXAdaptiveScene : LYXBehaviour
     /// <summary>
     /// 物体的原始宽度
     /// </summary>
-    public int mOriginalWidth;
+    public float mOriginalWidth;
 
     /// <summary>
     /// 物体的原始高度
     /// </summary>
-    public int mOriginalHeight;
+    public float mOriginalHeight;
 
     protected override void Awake()
     {
         transform.localScale = Vector3.one;
         anchorWidget = gameObject.GetComponent<UIWidget>();
         bool isWidget = anchorWidget != null;
-        Vector2 vect = LYXCompHelper.SceneWidthAndHeight(isWidget);
+        Vector2 vect = LYXCompHelper.SceneWidthAndHeight();
         mSceneWidth = (int)vect.x;
         mSceneHeight = (int)vect.y;
         if (isWidget)
         {
             anchorWidget.ResetAnchors();
-            mOriginalWidth = (int)anchorWidget.localSize.x;
-            mOriginalHeight = (int)anchorWidget.localSize.y;
+            mOriginalWidth = anchorWidget.localSize.x;
+            mOriginalHeight = anchorWidget.localSize.y;
         }
         else
         {
-            MeshFilter meshFiter = gameObject.GetComponent<MeshFilter>();
-            mOriginalWidth = (int)meshFiter.mesh.bounds.size.x;
-            mOriginalHeight = (int)meshFiter.mesh.bounds.size.z;
+            // 1024 - 15
+            // 768 - 11
+            mOriginalWidth = 15 / 1024f;
+            mOriginalHeight = 11 / 768f;
         }
     }
 
@@ -88,7 +89,7 @@ public class LYXAdaptiveScene : LYXBehaviour
     {
         if (anchorUpdate == LYXAnchorUpdate.OnUpdate)
         {
-            Vector2 vect = LYXCompHelper.SceneWidthAndHeight(anchorWidget != null);
+            Vector2 vect = LYXCompHelper.SceneWidthAndHeight();
             mSceneWidth = (int)vect.x;
             mSceneHeight = (int)vect.y;
             AdaptiveScene();
@@ -103,8 +104,8 @@ public class LYXAdaptiveScene : LYXBehaviour
         int w = 0, h = 0;
         if (anchorWidget != null)
         {
-            float ratioW = mOriginalWidth / (float)mSceneWidth;
-            float ratioH = mOriginalHeight / (float)mSceneHeight;
+            float ratioW = mOriginalWidth / mSceneWidth;
+            float ratioH = mOriginalHeight / mSceneHeight;
             if (ratioW < ratioH)
             {
                 w = mSceneWidth;
@@ -119,16 +120,10 @@ public class LYXAdaptiveScene : LYXBehaviour
         }
         else
         {
-            float ratioW = mSceneWidth / (float)mOriginalWidth;
-            float ratioH = mSceneHeight / (float)mOriginalHeight;
-            transform.localScale = new Vector3(ratioW, 1, GetCameraFOV(10));
+            float ratioW = Mathf.Ceil(mSceneWidth * mOriginalWidth);
+            float ratioH = Mathf.Ceil(mSceneHeight * mOriginalHeight);
+            transform.localScale = new Vector3(ratioW, 1, ratioH);
         }
     }
-
-	public float GetCameraFOV(float currentFOV)
-	{
-        float scale = Convert.ToSingle(mSceneHeight / 640f);
-		return currentFOV * scale;
-	}
 
 }
