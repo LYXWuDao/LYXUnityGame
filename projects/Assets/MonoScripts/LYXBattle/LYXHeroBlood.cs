@@ -58,7 +58,7 @@ public class LYXHeroBlood : LYXBehaviour
         btrans.localPosition = Vector3.zero;
         btrans.localRotation = Quaternion.identity;
         btrans.localScale = Vector3.one;
-        LYXHeroBlood blood = LYXCompHelper.AddComponet<LYXHeroBlood>(bgo);
+        LYXHeroBlood blood = LYXCompHelper.FindComponet<LYXHeroBlood>(bgo);
         // 血条
         blood.bloodSlider = btrans.Find("blood/bloodslider").GetComponent<UISlider>();
         //怒气
@@ -103,7 +103,7 @@ public class LYXHeroBlood : LYXBehaviour
     public void SetBloodPostion(GameObject target, Vector3 offect)
     {
         if (target == null) return;
-        LYXUIInset3D uiInset = LYXCompHelper.AddComponet<LYXUIInset3D>(gameObject);
+        LYXUIInset3D uiInset = LYXCompHelper.FindComponet<LYXUIInset3D>(gameObject);
         if (uiInset == null) return;
         uiInset.mOffset = offect;
         uiInset.mTarget = target;

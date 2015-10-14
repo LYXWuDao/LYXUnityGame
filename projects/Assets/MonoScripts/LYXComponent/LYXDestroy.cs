@@ -22,7 +22,7 @@ public class LYXDestroy : LYXBehaviour
     /// <returns></returns>
     public static LYXDestroy Begin(GameObject go, float dtyTime)
     {
-        LYXDestroy dest = LYXCompHelper.AddComponet<LYXDestroy>(go);
+        LYXDestroy dest = LYXCompHelper.FindComponet<LYXDestroy>(go);
         dest.mDtyTime = dtyTime;
         return dest;
     }

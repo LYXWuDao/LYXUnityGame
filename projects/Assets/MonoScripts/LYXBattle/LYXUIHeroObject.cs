@@ -63,10 +63,11 @@ public class LYXUIHeroObject : LYXBehaviour
         _isStartRefresh = true;
 
         // 血条
-        bloodSlider = transform.Find("roleblood/blood/bloodslider").GetComponent<UISlider>();
+        bloodSlider = LYXCompHelper.FindComponet<UISlider>(gameObject, "roleblood/blood/bloodslider");
         //怒气
-        angSlider = transform.Find("roleblood/anger/angerslider").GetComponent<UISlider>();
-        heroDieSpr = transform.Find("die").GetComponent<UISprite>();
+        angSlider = LYXCompHelper.FindComponet<UISlider>(gameObject, "roleblood/anger/angerslider");
+        heroDieSpr = LYXCompHelper.FindComponet<UISprite>(gameObject, "die");
+
         heroDieSpr.gameObject.SetActive(false);
         mTweenRota = TweenRotation.Begin(gameObject, 0.1f, Quaternion.identity);
         mTweenRota.enabled = false;
