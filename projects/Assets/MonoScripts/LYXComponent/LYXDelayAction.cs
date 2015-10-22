@@ -36,7 +36,7 @@ public class LYXDelayAction : LYXBehaviour
             action();
             return null;
         }
-        LYXDelayAction delact = LYXCompHelper.AddComponet<LYXDelayAction>(go);
+        LYXDelayAction delact = LYXCompHelper.FindComponet<LYXDelayAction>(go);
         delact.mActionBack = action;
         delact.mActionTime = delayTime;
         return delact;

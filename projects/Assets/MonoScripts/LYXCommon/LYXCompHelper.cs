@@ -15,7 +15,7 @@ using UnityEngine.UI;
 /****
  * 
  * 
- * 自定义组件帮助类
+ *   自定义组件帮助类
  * 
  * 
  */
@@ -23,21 +23,46 @@ using UnityEngine.UI;
 public class LYXCompHelper
 {
 
+    /// <summary>
+    ///  创建 gameobject
+    /// </summary>
+    /// <returns></returns>
     public static GameObject Create()
     {
-        return Create(string.Empty);
+        return Create("game object", null);
     }
 
-    public static GameObject Create(string name)
+    /// <summary>
+    ///  创建 gameobject
+    /// </summary>
+    /// <returns></returns>
+    public static GameObject Create(string name, Transform parent)
     {
-        GameObject gameobject = new GameObject(name);
-        return gameobject;
+        return Create(name, parent, null);
     }
 
-    public static GameObject Create(string name, Type t)
+    /// <summary>
+    ///  创建 gameobject
+    /// </summary>
+    /// <returns></returns>
+    public static GameObject Create(string name, Transform parent, Type t)
     {
-        GameObject gameobject = new GameObject(name, t);
-        return gameobject;
+        return CreateInstance(name, parent, t);
+    }
+
+    /// <summary>
+    /// 创建一个 gameobject 并且实例和初始化
+    /// </summary>
+    /// <returns></returns>
+    public static GameObject CreateInstance(string name, Transform parent, Type t)
+    {
+        GameObject create = new GameObject(name, t);
+        Transform trans = create.transform;
+        if (parent != null) trans.parent = parent;
+        trans.localPosition = Vector3.zero;
+        trans.localRotation = Quaternion.identity;
+        trans.localScale = Vector3.one;
+        return create;
     }
 
     /// <summary>
@@ -102,49 +127,121 @@ public class LYXCompHelper
     /// <summary>
     /// 查找组件
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="gameobject"></param>
+    /// <typeparam name="T">组件的类型</typeparam>
+    /// <param name="source">查找组件的对象</param>
     /// <returns></returns>
-    public static T GetComponent<T>(GameObject gameobject) where T : Component
+    public static T GetComponent<T>(GameObject source) where T : Component
     {
-        if (gameobject == null) return default(T);
-        return gameobject.GetComponent<T>();
+        return GetComponent<T>(source, string.Empty);
     }
 
     /// <summary>
-    /// 增加组件
+    /// 查找组件
     /// </summary>
     /// <typeparam name="T">组件的类型</typeparam>
-    /// <param name="gameobject">增加组件的 gameobject </param>
+    /// <param name="source">查找组件的对象</param>
+    /// <param name="childPath">子节点路径</param>
     /// <returns></returns>
-    public static T AddComponet<T>(GameObject gameobject) where T : Component
+    public static T GetComponent<T>(GameObject source, string childPath) where T : Component
     {
-        T t = GetComponent<T>(gameobject);
+        if (source == null) return default(T);
+        if (string.IsNullOrEmpty(childPath)) return source.GetComponent<T>();
+        Transform child = FindTransform(source, childPath);
+        if (child == null) return default(T);
+        return child.GetComponent<T>();
+    }
+
+    /// <summary>
+    /// 增加组件 
+    /// </summary>
+    /// <typeparam name="T">组件的类型</typeparam>
+    /// <param name="source">增加组件的 gameobject </param>
+    /// <returns></returns>
+    public static T AddComponet<T>(GameObject source) where T : Component
+    {
+        return AddComponet<T>(source, string.Empty);
+    }
+
+    /// <summary>
+    /// 增加组件 
+    /// </summary>
+    /// <typeparam name="T">组件的类型</typeparam>
+    /// <param name="source">增加组件的 gameobject </param>
+    /// <param name="childPath">子节点路径</param>
+    /// <returns></returns>
+    public static T AddComponet<T>(GameObject source, string childPath) where T : Component
+    {
+        if (source == null) return default(T);
+        if (string.IsNullOrEmpty(childPath)) return source.AddComponent<T>();
+        Transform child = FindTransform(source, childPath);
+        if (child == null) return default(T);
+        return child.gameObject.AddComponent<T>();
+    }
+
+    /// <summary>
+    /// 发现组件，如果不存在就自动增加
+    /// </summary>
+    /// <typeparam name="T">组件的类型</typeparam>
+    /// <param name="source">查找/增加 组件的 gameobject</param>
+    /// <returns></returns>
+    public static T FindComponet<T>(GameObject source) where T : Component
+    {
+        return FindComponet<T>(source, string.Empty);
+    }
+
+    /// <summary>
+    /// 发现组件，如果不存在就自动增加
+    /// </summary>
+    /// <typeparam name="T">组件的类型</typeparam>
+    /// <param name="source">查找/增加 组件的 gameobject</param>
+    /// <returns></returns>
+    public static T FindComponet<T>(GameObject source, string childPath) where T : Component
+    {
+        T t = GetComponent<T>(source, childPath);
         if (t != null) return t;
-        return gameobject.AddComponent<T>();
+        return AddComponet<T>(source, childPath);
     }
 
     /// <summary>
     /// 发现子节点
     /// </summary>
-    /// <param name="source"></param>
-    /// <param name="path"></param>
+    /// <param name="source">资源父节点</param>
+    /// <param name="path">查找子节点路径</param>
     /// <returns></returns>
     public static Transform FindTransform(GameObject source, string path)
     {
+        if (source == null) return null;
         return FindTransform(source.transform, path);
     }
 
     /// <summary>
     /// 发现子节点
     /// </summary>
-    /// <param name="source"></param>
-    /// <param name="path"></param>
+    /// <param name="source">资源父节点</param>
+    /// <param name="path">查找子节点路径</param>
     /// <returns></returns>
     public static Transform FindTransform(Transform source, string path)
     {
         if (source == null || string.IsNullOrEmpty(path)) return null;
         return source.Find(path);
+    }
+
+    /// <summary>
+    /// 获得屏幕的高和宽
+    /// </summary>
+    /// <returns></returns>
+    public static Vector2 SceneWidthAndHeight()
+    {
+        Vector2 vect = new Vector2(Screen.width, Screen.height);
+        UIRoot root = GameObject.FindObjectOfType<UIRoot>();
+        if (root != null)
+        {
+            float s = (float)root.activeHeight / Screen.height;
+            int height = Mathf.CeilToInt(Screen.height * s);
+            int width = Mathf.CeilToInt(Screen.width * s);
+            vect = new Vector2(width, height);
+        }
+        return vect;
     }
 
     /// <summary>
