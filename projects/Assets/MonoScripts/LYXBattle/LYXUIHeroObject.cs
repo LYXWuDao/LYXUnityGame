@@ -9,7 +9,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUIHeroObject : LYXBehaviour
+public class LYXUIHeroObject : LYXBaseBehaviour
 {
     /// <summary>
     /// 战斗管理

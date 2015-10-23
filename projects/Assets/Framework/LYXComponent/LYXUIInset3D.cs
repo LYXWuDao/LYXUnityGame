@@ -11,7 +11,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUIInset3D : LYXBehaviour
+public class LYXUIInset3D : LYXBaseBehaviour
 {
 
     /// <summary>

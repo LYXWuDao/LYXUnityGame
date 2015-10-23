@@ -9,7 +9,7 @@ using System.Collections;
  * 
  */
 
-public class LYXHeroBlood : LYXBehaviour
+public class LYXHeroBlood : LYXBaseBehaviour
 {
     /// <summary>
     /// 保存当前侠客数据

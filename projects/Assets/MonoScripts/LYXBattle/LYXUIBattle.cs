@@ -10,7 +10,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUIBattle : LYXBehaviour
+public class LYXUIBattle : LYXBaseBehaviour
 {
 
     /// <summary>

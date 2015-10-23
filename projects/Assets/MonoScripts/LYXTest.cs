@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LYXTest : LYXBehaviour
+public class LYXTest : LYXBaseBehaviour
 {
 
     protected override void Start()

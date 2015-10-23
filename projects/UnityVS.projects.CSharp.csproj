@@ -7,7 +7,6 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2F2E66B1-5FCD-7CAD-12C8-2A1E34F47373}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,40 +15,29 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
-<<<<<<< HEAD
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>4.6.8f1</UnityVersion>
-=======
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>4.6.7f1</UnityVersion>
     <RootNamespace></RootNamespace>
->>>>>>> origin/master
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-<<<<<<< HEAD
-    <DefineConstants>DEBUG;TRACE;UNITY_4_6_8;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
-=======
     <DefineConstants>DEBUG;TRACE;UNITY_4_6_7;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
->>>>>>> origin/master
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-<<<<<<< HEAD
-    <DefineConstants>TRACE;UNITY_4_6_8;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
-=======
     <DefineConstants>TRACE;UNITY_4_6_7;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
->>>>>>> origin/master
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -63,13 +51,9 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-    <Reference Include="System.Xml.Linq" />
-=======
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
->>>>>>> origin/master
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -84,6 +68,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Framework\LYXBehaviour\LYXBaseBehaviour.cs" />
+    <Compile Include="Assets\Framework\LYXCommon\LYXCompHelper.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXAdaptiveScene.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXArcTweener.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXClickEffect.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXDelayAction.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXDestroy.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXDragEvent.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXLineTweener.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXMouseEvent.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXTweener.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXUIInset3D.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXUILookAt3D.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleBuffer.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleManage.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXHeroBlood.cs" />
@@ -91,19 +88,6 @@
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXSkillEffects.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXUIBattle.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXUIHeroObject.cs" />
-    <Compile Include="Assets\MonoScripts\LYXCommon\LYXCompHelper.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXAdaptiveScene.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXArcTweener.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXBehaviour.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXClickEffect.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXDelayAction.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXDestroy.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXDragEvent.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXLineTweener.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXMouseEvent.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXTweener.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXUIInset3D.cs" />
-    <Compile Include="Assets\MonoScripts\LYXComponent\LYXUILookAt3D.cs" />
     <Compile Include="Assets\MonoScripts\LYXConfig\LYXHeroConfig.cs" />
     <Compile Include="Assets\MonoScripts\LYXConfig\LYXSkillConfig.cs" />
     <Compile Include="Assets\MonoScripts\LYXEntity\LYXHeroEntity.cs" />
@@ -251,6 +235,7 @@
     <Compile Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\ParticleScaler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Framework\read.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
@@ -297,5 +282,5 @@
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

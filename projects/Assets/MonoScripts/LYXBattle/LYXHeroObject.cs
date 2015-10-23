@@ -12,7 +12,7 @@ using System.Collections;
  * 
  */
 
-public class LYXHeroObject : LYXBehaviour
+public class LYXHeroObject : LYXBaseBehaviour
 {
 
     /// <summary>

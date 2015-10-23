@@ -6,17 +6,25 @@ using UnityEngine;
 /****
  * 
  * 
- * unity 脚本的生命周期
+ *  unity 脚本的生命周期
+ *  
+ *  行为组件基类，所以行为都需要继承它
  * 
  */
 
-public class LYXBehaviour : MonoBehaviour
+public class LYXBaseBehaviour : MonoBehaviour
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     protected virtual void Awake()
     {
     }
 
+    /// <summary>
+    /// 获得焦点
+    /// </summary>
     protected virtual void OnEnable()
     {
     }

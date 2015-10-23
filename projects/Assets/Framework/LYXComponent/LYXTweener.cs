@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LYXTweener : LYXBehaviour
+public class LYXTweener : LYXBaseBehaviour
 {
     /// <summary>
     ///  运动方式

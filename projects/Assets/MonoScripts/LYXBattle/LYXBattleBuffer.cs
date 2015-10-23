@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LYXBattleBuffer : LYXBehaviour
+public class LYXBattleBuffer : LYXBaseBehaviour
 {
 
     /// <summary>

@@ -9,7 +9,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUILookAt3D : LYXBehaviour
+public class LYXUILookAt3D : LYXBaseBehaviour
 {
 
     /// <summary>

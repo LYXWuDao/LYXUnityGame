@@ -8,7 +8,7 @@ using System.Collections;
  * 
  */
 
-public class LYXDestroy : LYXBehaviour
+public class LYXDestroy : LYXBaseBehaviour
 {
 
     /// <summary>

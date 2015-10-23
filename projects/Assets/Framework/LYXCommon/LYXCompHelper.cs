@@ -1,21 +1,14 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
-/****
- * 
- * 
- * 组件 辅助类
- * 
- * 包括自动创建组件，删除 等
- * 
- * 
- */
 using UnityEngine.UI;
 
 /****
  * 
+ * 自定义组件帮助类
+ * 组件 辅助类
  * 
- *   自定义组件帮助类
+ * 包括自动创建组件，删除 等
  * 
  * 
  */

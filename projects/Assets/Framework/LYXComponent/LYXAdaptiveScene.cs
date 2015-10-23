@@ -8,7 +8,7 @@ using UnityEngine;
  * 
  */
 
-public class LYXAdaptiveScene : LYXBehaviour
+public class LYXAdaptiveScene : LYXBaseBehaviour
 {
 
     /// <summary>

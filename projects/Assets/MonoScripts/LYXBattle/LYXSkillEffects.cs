@@ -10,7 +10,7 @@ using UnityEngine;
  * 
  */
 
-public class LYXSkillEffects : LYXBehaviour
+public class LYXSkillEffects : LYXBaseBehaviour
 {
     /// <summary>
     ///   args 

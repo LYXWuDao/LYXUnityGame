@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LYXDelayAction : LYXBehaviour
+public class LYXDelayAction : LYXBaseBehaviour
 {
 
     /// <summary>
