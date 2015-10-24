@@ -8,7 +8,7 @@ using System.Collections;
  * 
  */
 
-public class LYXClickEffect : LYXMouseEvent
+public class LYXClickEffect : LYXMouseBehaviour
 {
 
     /// <summary>

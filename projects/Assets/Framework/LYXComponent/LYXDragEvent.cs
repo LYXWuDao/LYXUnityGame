@@ -13,7 +13,7 @@ using UnityEngine;
  */
 
 
-public class LYXDragEvent : LYXMouseEvent
+public class LYXDragEvent : LYXMouseBehaviour
 {
 
     /// <summary>

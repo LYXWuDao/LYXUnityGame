@@ -3,6 +3,7 @@ using UnityEngine;
 
 /***
  * 
+ * 对象自适应屏幕
  * 
  * 屏幕自适应
  * 

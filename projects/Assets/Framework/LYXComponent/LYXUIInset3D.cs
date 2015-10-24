@@ -2,12 +2,12 @@
 using System.Collections;
 
 
-/****8
+/****
  * 
  * 
  * 将 ui 嵌入 3d 场景内
  * 
- * 如：战斗buff  伤害数值
+ * 如：战斗 buff  伤害数值
  * 
  */
 

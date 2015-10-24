@@ -8,7 +8,7 @@ using System.Collections;
  * 
  */
 
-public class LYXDestroy : LYXBaseBehaviour
+public class LYXSelfDestroy : LYXBaseBehaviour
 {
 
     /// <summary>
@@ -18,11 +18,13 @@ public class LYXDestroy : LYXBaseBehaviour
 
     /// <summary>
     /// 增加一个销毁脚本
+    /// 
+    /// 开启一个销毁
     /// </summary>
     /// <returns></returns>
-    public static LYXDestroy Begin(GameObject go, float dtyTime)
+    public static LYXSelfDestroy Begin(GameObject go, float dtyTime)
     {
-        LYXDestroy dest = LYXCompHelper.FindComponet<LYXDestroy>(go);
+        LYXSelfDestroy dest = LYXCompHelper.FindComponet<LYXSelfDestroy>(go);
         dest.mDtyTime = dtyTime;
         return dest;
     }

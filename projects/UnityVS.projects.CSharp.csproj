@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>4.6.7f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -74,13 +76,13 @@
     <Compile Include="Assets\Framework\LYXComponent\LYXArcTweener.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXClickEffect.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXDelayAction.cs" />
-    <Compile Include="Assets\Framework\LYXComponent\LYXDestroy.cs" />
+    <Compile Include="Assets\Framework\LYXComponent\LYXSelfDestroy.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXDragEvent.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXLineTweener.cs" />
-    <Compile Include="Assets\Framework\LYXComponent\LYXMouseEvent.cs" />
+    <Compile Include="Assets\Framework\LYXBehaviour\LYXMouseBehaviour.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXTweener.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXUIInset3D.cs" />
-    <Compile Include="Assets\Framework\LYXComponent\LYXUILookAt3D.cs" />
+    <Compile Include="Assets\Terrain\LYXUILookAt3D.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleBuffer.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleManage.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXHeroBlood.cs" />

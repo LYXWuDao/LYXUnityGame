@@ -1,31 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /****
  * 
- * 
- *  鼠标点击响应事件组件
+ *  鼠标响应事件行为组件
  *  
  *  分别响应鼠标左键，中键，右键 按下，抬起 持续事件
  * 
  */
 
-public class LYXMouseEvent : MonoBehaviour
+public class LYXMouseBehaviour : LYXBaseBehaviour
 {
 
-    protected virtual void Awake()
-    {
-
-    }
-
-    // Use this for initialization
-    protected virtual void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
 
         if (Input.GetMouseButtonDown(0))
@@ -72,21 +58,6 @@ public class LYXMouseEvent : MonoBehaviour
         {
             OnMouseCenterButton();
         }
-
-        OnUpdate(Time.deltaTime);
-    }
-
-    /// <summary>
-    ///  可重写更新函数
-    /// </summary>
-    /// <param name="deltaTime">
-    /// 
-    /// deltaTime，它表示距上一次调用Update或FixedUpdate 所用的时间。 
-    /// 
-    /// </param>
-    protected virtual void OnUpdate(float deltaTime)
-    {
-
     }
 
     /// <summary>

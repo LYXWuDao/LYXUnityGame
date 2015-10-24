@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 /****
  * 
@@ -16,7 +13,7 @@ public class LYXBaseBehaviour : MonoBehaviour
 {
 
     /// <summary>
-    /// 
+    /// 对象创建后调用
     /// </summary>
     protected virtual void Awake()
     {
@@ -38,11 +35,17 @@ public class LYXBaseBehaviour : MonoBehaviour
     {
     }
 
+    /// <summary>
+    /// 在update第一帧调用前调用
+    /// </summary>
     protected virtual void Start()
     {
 
     }
 
+    /// <summary>
+    /// 每一帧调用
+    /// </summary>
     protected virtual void Update()
     {
         OnUpdate(Time.deltaTime);
@@ -57,23 +60,38 @@ public class LYXBaseBehaviour : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// unity 界面绘制调用
+    /// </summary>
     protected virtual void OnGUI()
     {
 
     }
 
+    /// <summary>
+    /// 项目暂停时调用
+    /// </summary>
     protected virtual void OnApplicationPause()
     {
     }
 
+    /// <summary>
+    /// 对象失去焦点时调用
+    /// </summary>
     protected virtual void OnDisable()
     {
     }
 
+    /// <summary>
+    /// 对象销毁时调用
+    /// </summary>
     protected virtual void OnDestroy()
     {
     }
 
+    /// <summary>
+    /// 项目退出时调用
+    /// </summary>
     protected virtual void OnApplicationQuit()
     {
     }

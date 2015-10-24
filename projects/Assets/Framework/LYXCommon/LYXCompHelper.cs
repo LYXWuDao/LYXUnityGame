@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 /****
  * 
@@ -9,7 +7,6 @@ using UnityEngine.UI;
  * 组件 辅助类
  * 
  * 包括自动创建组件，删除 等
- * 
  * 
  */
 
