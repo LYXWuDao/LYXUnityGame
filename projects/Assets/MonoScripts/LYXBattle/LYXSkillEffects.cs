@@ -119,7 +119,7 @@ public class LYXSkillEffects : LYXBaseBehaviour
     /// <summary>
     /// 销毁器
     /// </summary>
-    private LYXDestroy mDestroy;
+    private LYXSelfDestroy mDestroy;
 
     /// <summary>
     /// 得到参数中的技能对象
@@ -212,7 +212,7 @@ public class LYXSkillEffects : LYXBaseBehaviour
         effects.SetEffectRotation(new Vector3(0, 180f, 0));
         effects.SetEffectOffset(new Vector3(0, 4f, 4f));
         effects.SetEffectScale(3);
-        effects.mDestroy = LYXDestroy.Begin(effects.gameObject, 2f);
+        effects.mDestroy = LYXSelfDestroy.Begin(effects.gameObject, 2f);
     }
 
 }

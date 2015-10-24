@@ -24,7 +24,7 @@ public class LYXClickEffect : LYXMouseBehaviour
 
         GameObject go = NGUITools.AddChild(gameObject, mTempEff);
         if (go == null) return;
-        LYXDestroy dty = go.AddComponent<LYXDestroy>();
+        LYXSelfDestroy dty = go.AddComponent<LYXSelfDestroy>();
         dty.mDtyTime = 1f;
         dty.transform.localScale = Vector3.one * 0.5f;
         dty.transform.localRotation = Quaternion.Euler(new Vector3(-90f, 0, 0));

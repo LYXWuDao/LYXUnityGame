@@ -7,6 +7,11 @@ Folder
 
 	LYXComponent --  简易组件使用库
 
-	LYXEditor  --  编辑器模式下使用库
+	Editor  --  编辑器模式下使用库
 
 	LYXSources --  资源使用和管理库
+
+
+Files
+	
+	LYXTestBehavior  --  测试文件
