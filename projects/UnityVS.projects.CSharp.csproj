@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>4.6.7f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -71,7 +73,9 @@
     <Compile Include="Assets\Framework\LYXBehaviour\LYXBaseBehaviour.cs" />
     <Compile Include="Assets\Framework\LYXBehaviour\LYXMouseBehaviour.cs" />
     <Compile Include="Assets\Framework\LYXCommon\LYXCompHelper.cs" />
-    <Compile Include="Assets\Framework\LYXCommon\LYXPathConfig.cs" />
+    <Compile Include="Assets\Framework\LYXCommon\LYXEnumEntityHelper.cs" />
+    <Compile Include="Assets\Framework\LYXCommon\LYXLogHelper.cs" />
+    <Compile Include="Assets\Framework\LYXCommon\LYXPathHelper.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXAdaptiveScene.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXArcTweener.cs" />
     <Compile Include="Assets\Framework\LYXComponent\LYXClickEffect.cs" />
@@ -85,6 +89,7 @@
     <Compile Include="Assets\Framework\LYXSources\LYXLoadSource.cs" />
     <Compile Include="Assets\Framework\LYXSources\LYXSourceManage.cs" />
     <Compile Include="Assets\Framework\LYXTestBehavior.cs" />
+    <Compile Include="Assets\Framework\LYXUI\LYXUIManage.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleBuffer.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleManage.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXHeroBlood.cs" />
@@ -287,5 +292,6 @@
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

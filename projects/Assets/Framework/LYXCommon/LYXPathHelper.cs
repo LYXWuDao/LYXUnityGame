@@ -9,7 +9,7 @@ using UnityEngine;
  * 
  */
 
-public class LYXPathConfig
+public class LYXPathHelper
 {
 
     /// <summary>
@@ -18,7 +18,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UnityAssets()
     {
-        return Application.dataPath;
+        return Application.dataPath + "/";
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UntiyResource()
     {
-        return Application.dataPath + "/Resources";
+        return Application.dataPath + "Resources/";
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UnityDefaultResource()
     {
-        return "Assets/Resources";
+        return "Assets/Resources/";
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UnityStreamingAssets()
     {
-        return Application.streamingAssetsPath;
+        return Application.streamingAssetsPath + "/";
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UnityBuildRootPath()
     {
-        return UnityAssets() + "/SourceAssets";
+        return UnityAssets() + "SourceAssets/";
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UnityBuildUiPath()
     {
-        return UnityBuildRootPath() + "/UI";
+        return UnityBuildRootPath() + "UI/";
     }
 
     /// <summary>
@@ -84,25 +84,7 @@ public class LYXPathConfig
     /// <returns></returns>
     public static string UnityStreamingSourcePath()
     {
-        return UnityStreamingAssets() + "/Assets";
-    }
-
-    /// <summary>
-    /// 资源导入的路径
-    /// </summary>
-    /// <returns></returns>
-    public static string UnityLoadResourcesPath()
-    {
-        return UnityBuildRootPath();
-    }
-
-    /// <summary>
-    /// 资源导入 ui 的路径
-    /// </summary>
-    /// <returns></returns>
-    public static string UnityLoadUiSourcePath()
-    {
-        return UnityBuildUiPath();
+        return UnityStreamingAssets() + "Assets/";
     }
 
 }
