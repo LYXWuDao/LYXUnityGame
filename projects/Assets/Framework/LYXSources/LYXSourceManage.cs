@@ -13,6 +13,7 @@ using System.Collections;
 
 public class LYXSourceManage
 {
+
     /// <summary>
     /// 缓存资源数据
     /// </summary>
@@ -53,6 +54,37 @@ public class LYXSourceManage
     public static LoadSourceEntity LoadEnitySource(string resName, string bundPath, Type type)
     {
         return LYXLoadSource.LoadBuildSources(resName, bundPath, type);
+    }
+
+    /// <summary>
+    /// 移出单个资源
+    /// </summary>
+    /// <param name="resName">资源名字</param>
+    /// <returns></returns>
+    public static LoadSourceEntity RemoveSource(string resName)
+    {
+        if (string.IsNullOrEmpty(resName))
+        {
+            LYXLogHelper.Error("移出的资源名字为空！,resName = " + resName);
+            return null;
+        }
+        if (!CacheSource.ContainsKey(resName))
+        {
+            LYXLogHelper.Error("移出的资源不存在！,resName = " + resName);
+            return null;
+        }
+        LoadSourceEntity entity = CacheSource[resName];
+        CacheSource.Remove(resName);
+        return entity;
+    }
+
+    /// <summary>
+    /// 移出所有资源
+    /// </summary>
+    /// <returns></returns>
+    public static void RemoveAllSource()
+    {
+        CacheSource.Clear();
     }
 
 }

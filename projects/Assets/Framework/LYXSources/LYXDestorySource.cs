@@ -9,7 +9,7 @@ using System.Collections;
  * 
  */
 
-public class LYXDestorySource : LYXBaseBehaviour
+public class LYXDestorySource
 {
 
 
