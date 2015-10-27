@@ -13,9 +13,9 @@ public class LYXTestBehavior : LYXBaseBehaviour
 
     protected override void Awake()
     {
-
         LYXUIManage.OpenUI("uiBattlePanel");
 
+        LYXProfilerBehavior.BeginProfiler(gameObject);
     }
 
 }

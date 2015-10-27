@@ -11,7 +11,7 @@ using System.Collections;
  * 
  */
 
-public class LYXSourceManage
+public class LYXManageSource
 {
 
     /// <summary>
@@ -29,14 +29,14 @@ public class LYXSourceManage
     public static GameObject LoadSource(string resName, string bundPath, Type type)
     {
         LoadSourceEntity entity = null;
-        if (CacheSource.ContainsKey(resName))
-            entity = CacheSource[resName];
-        else
-            entity = LoadEnitySource(resName, bundPath, type);
+        if (CacheSource.ContainsKey(resName)) entity = CacheSource[resName];
+        else entity = LoadEnitySource(resName, bundPath, type);
         if (entity == null) return null;
-
-        entity.SourceId = Guid.NewGuid().ToString();
-        CacheSource.Add(resName, entity);
+        if (!CacheSource.ContainsKey(resName))
+        {
+            entity.SourceId = Guid.NewGuid().ToString();
+            CacheSource.Add(resName, entity);
+        }
         return entity.LoadObj;
     }
 
@@ -74,6 +74,7 @@ public class LYXSourceManage
             return null;
         }
         LoadSourceEntity entity = CacheSource[resName];
+        LYXUnloadSource.UnLoadSource(entity.Bundle);
         CacheSource.Remove(resName);
         return entity;
     }
@@ -84,6 +85,8 @@ public class LYXSourceManage
     /// <returns></returns>
     public static void RemoveAllSource()
     {
+        foreach (LoadSourceEntity entity in CacheSource.Values)
+            LYXUnloadSource.UnLoadSource(entity.Bundle);
         CacheSource.Clear();
     }
 

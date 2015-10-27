@@ -18,7 +18,7 @@ public class LYXUIManage
     public static void OpenUI(string uiName)
     {
         string bundlePath = string.Format("UI/{0}.data", uiName);
-        GameObject ui = LYXSourceManage.LoadSource(uiName, bundlePath, typeof(GameObject));
+        GameObject ui = LYXManageSource.LoadSource(uiName, bundlePath, typeof(GameObject));
         if (ui == null)
         {
             LYXLogHelper.Error("打开资源不存在!");
