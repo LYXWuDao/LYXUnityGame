@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.LYX.Common;
+using UnityEngine;
 using System.Collections;
 
 
@@ -9,31 +10,36 @@ using System.Collections;
  * 
  */
 
-public class LYXUnloadSource
+namespace Game.LYX.Source
 {
 
-    /// <summary>
-    /// 卸载资源
-    /// </summary>
-    /// <param name="bundle">卸载的资源</param>
-    public static void UnLoadSource(AssetBundle bundle)
+    public class LYXUnloadSource
     {
-        UnLoadSource(bundle, true);
-    }
 
-    /// <summary>
-    /// 卸载资源
-    /// </summary>
-    /// <param name="bundle">卸载的资源</param>
-    /// <param name="unload"></param>
-    public static void UnLoadSource(AssetBundle bundle, bool unload)
-    {
-        if (bundle == null)
+        /// <summary>
+        /// 卸载资源
+        /// </summary>
+        /// <param name="bundle">卸载的资源</param>
+        public static void UnLoadSource(AssetBundle bundle)
         {
-            LYXLogHelper.Error("卸载资源为空！");
-            return;
+            UnLoadSource(bundle, true);
         }
-        bundle.Unload(unload);
+
+        /// <summary>
+        /// 卸载资源
+        /// </summary>
+        /// <param name="bundle">卸载的资源</param>
+        /// <param name="unload"></param>
+        public static void UnLoadSource(AssetBundle bundle, bool unload)
+        {
+            if (bundle == null)
+            {
+                LYXLogHelper.Error("卸载资源为空！");
+                return;
+            }
+            bundle.Unload(unload);
+        }
+
     }
 
 }

@@ -8,126 +8,131 @@
  * 
  */
 
-public class LYXMouseBehaviour : LYXBaseBehaviour
+namespace Game.LYX.Behaviour
 {
 
-    protected override void Update()
+    public class LYXMouseBehaviour : LYXBaseBehaviour
     {
 
-        if (Input.GetMouseButtonDown(0))
+        protected override void Update()
         {
-            OnMouseLeftDown();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnMouseLeftDown();
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                OnMouseLeftUp();
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                OnMouseRightDown();
+            }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                OnMouseRightUp();
+            }
+
+            if (Input.GetMouseButtonDown(2))
+            {
+                OnMouseCenterDown();
+            }
+
+            if (Input.GetMouseButtonUp(2))
+            {
+                OnMouseCenterUp();
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                OnMouseLeftButton();
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                OnMouseRightButton();
+            }
+
+            if (Input.GetMouseButton(2))
+            {
+                OnMouseCenterButton();
+            }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        /// <summary>
+        ///  当鼠标左键按下   
+        /// </summary>
+        protected virtual void OnMouseLeftDown()
         {
-            OnMouseLeftUp();
+
         }
 
-        if (Input.GetMouseButtonDown(1))
+        /// <summary>
+        ///  当鼠标左键抬起
+        /// </summary>
+        protected virtual void OnMouseLeftUp()
         {
-            OnMouseRightDown();
         }
 
-        if (Input.GetMouseButtonUp(1))
+        /// <summary>
+        /// 鼠标左键保持按下的过程
+        /// </summary>
+        protected virtual void OnMouseLeftButton()
         {
-            OnMouseRightUp();
+
         }
 
-        if (Input.GetMouseButtonDown(2))
+        /// <summary>
+        ///  当鼠标右键按下
+        /// </summary>
+        protected virtual void OnMouseRightDown()
         {
-            OnMouseCenterDown();
+
         }
 
-        if (Input.GetMouseButtonUp(2))
+        /// <summary>
+        ///  当鼠标右键抬起
+        /// </summary>
+        protected virtual void OnMouseRightUp()
         {
-            OnMouseCenterUp();
+
         }
 
-        if (Input.GetMouseButton(0))
+        /// <summary>
+        /// 鼠标右键保持按下的过程
+        /// </summary>
+        protected virtual void OnMouseRightButton()
         {
-            OnMouseLeftButton();
+
         }
 
-        if (Input.GetMouseButton(1))
+        /// <summary>
+        ///  当鼠标中键按下
+        /// </summary>
+        protected virtual void OnMouseCenterDown()
         {
-            OnMouseRightButton();
+
         }
 
-        if (Input.GetMouseButton(2))
+        /// <summary>
+        ///  当鼠标中键抬起
+        /// </summary>
+        protected virtual void OnMouseCenterUp()
         {
-            OnMouseCenterButton();
+
+        }
+
+        /// <summary>
+        /// 鼠标中键保持按下的过程
+        /// </summary>
+        protected virtual void OnMouseCenterButton()
+        {
+
         }
     }
 
-    /// <summary>
-    ///  当鼠标左键按下   
-    /// </summary>
-    protected virtual void OnMouseLeftDown()
-    {
-
-    }
-
-    /// <summary>
-    ///  当鼠标左键抬起
-    /// </summary>
-    protected virtual void OnMouseLeftUp()
-    {
-    }
-
-    /// <summary>
-    /// 鼠标左键保持按下的过程
-    /// </summary>
-    protected virtual void OnMouseLeftButton()
-    {
-
-    }
-
-    /// <summary>
-    ///  当鼠标右键按下
-    /// </summary>
-    protected virtual void OnMouseRightDown()
-    {
-
-    }
-
-    /// <summary>
-    ///  当鼠标右键抬起
-    /// </summary>
-    protected virtual void OnMouseRightUp()
-    {
-
-    }
-
-    /// <summary>
-    /// 鼠标右键保持按下的过程
-    /// </summary>
-    protected virtual void OnMouseRightButton()
-    {
-
-    }
-
-    /// <summary>
-    ///  当鼠标中键按下
-    /// </summary>
-    protected virtual void OnMouseCenterDown()
-    {
-
-    }
-
-    /// <summary>
-    ///  当鼠标中键抬起
-    /// </summary>
-    protected virtual void OnMouseCenterUp()
-    {
-
-    }
-
-    /// <summary>
-    /// 鼠标中键保持按下的过程
-    /// </summary>
-    protected virtual void OnMouseCenterButton()
-    {
-
-    }
 }

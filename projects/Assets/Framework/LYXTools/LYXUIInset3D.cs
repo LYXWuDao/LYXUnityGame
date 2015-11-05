@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.LYX.Behaviour;
+using UnityEngine;
 using System.Collections;
 
 
@@ -11,42 +12,47 @@ using System.Collections;
  * 
  */
 
-public class LYXUIInset3D : LYXBaseBehaviour
+namespace Game.LYX.Tools
 {
 
-    /// <summary>
-    /// 3d 摄像机
-    /// </summary>
-    public Camera mainCamera;
-
-    /// <summary>
-    /// 看向的目标
-    /// </summary>
-    public GameObject mTarget;
-
-    public Vector3 mOffset;
-
-    /// <summary>
-    /// 保存当前目标的位置
-    /// </summary>
-    [System.NonSerialized]
-    private Vector3 mSaveTagPos;
-
-    protected override void Start()
+    public class LYXUIInset3D : LYXBaseBehaviour
     {
-        if (mainCamera == null) mainCamera = Camera.main;
-        mSaveTagPos = Vector3.one * -1000;
-    }
 
-    protected override void OnUpdate(float deltaTime)
-    {
-        if (mTarget == null) return;
-        Vector3 tpos = mTarget.transform.position;
-        if (mSaveTagPos == tpos) return;
-        mSaveTagPos = tpos;
-        // 将 2d ui 设置到3d 目标位置
-        transform.position = mSaveTagPos;
-        transform.localPosition = transform.localPosition + mOffset;
+        /// <summary>
+        /// 3d 摄像机
+        /// </summary>
+        public Camera mainCamera;
+
+        /// <summary>
+        /// 看向的目标
+        /// </summary>
+        public GameObject mTarget;
+
+        public Vector3 mOffset;
+
+        /// <summary>
+        /// 保存当前目标的位置
+        /// </summary>
+        [System.NonSerialized]
+        private Vector3 mSaveTagPos;
+
+        protected override void Start()
+        {
+            if (mainCamera == null) mainCamera = Camera.main;
+            mSaveTagPos = Vector3.one * -1000;
+        }
+
+        protected override void OnUpdate(float deltaTime)
+        {
+            if (mTarget == null) return;
+            Vector3 tpos = mTarget.transform.position;
+            if (mSaveTagPos == tpos) return;
+            mSaveTagPos = tpos;
+            // 将 2d ui 设置到3d 目标位置
+            transform.position = mSaveTagPos;
+            transform.localPosition = transform.localPosition + mOffset;
+        }
+
     }
 
 }

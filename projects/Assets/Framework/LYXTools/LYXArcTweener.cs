@@ -11,79 +11,84 @@ using System.Collections;
  * 
  */
 
-public class LYXArcTweener : LYXTweener
+namespace Game.LYX.Tools
 {
-    /// <summary>
-    /// 圆心
-    /// </summary>
-    private Vector3 mHeart;
 
-    /// <summary>
-    /// 移动时间
-    /// </summary>
-    private float mMoveTime = 0f;
-
-    private LTSpline mMovePath;
-
-    public Transform[] mPoint;
-
-    private Vector3 mCenter;
-
-    protected override void Awake()
+    public class LYXArcTweener : LYXTweener
     {
+        /// <summary>
+        /// 圆心
+        /// </summary>
+        private Vector3 mHeart;
 
-    }
+        /// <summary>
+        /// 移动时间
+        /// </summary>
+        private float mMoveTime = 0f;
 
-    protected override void Start()
-    {
+        private LTSpline mMovePath;
 
-    }
+        public Transform[] mPoint;
 
-    protected override void OnUpdate(float deltaTime)
-    {
+        private Vector3 mCenter;
 
-    }
-
-    private bool isDraw = false;
-
-    /// <summary>
-    /// 
-    /// // vector3 ( r*cos A, 0, r*sin A  );
-    /// 
-    /// </summary>
-
-    void OnDrawGizmos()
-    {
-
-        Gizmos.color = Color.red;
-
-        for (int i = 0, len = mPoint.Length; i < len && i + 1 < len; i++)
+        protected override void Awake()
         {
-            Vector3 source = mPoint[i].position;
-            Vector3 target = mPoint[i + 1].position;
 
-            Vector3 start = target;
-            Vector3 cirCenter = (source + target) / 2;
-            float radius = Vector3.Distance(source, target) / 2;
+        }
 
-            Debug.Log(target.x - cirCenter.x);
+        protected override void Start()
+        {
 
-            float angle = 180 * Mathf.Asin((target.z - cirCenter.z) / radius) / (Mathf.PI * radius);
-            
-            Debug.Log(angle);
+        }
 
-            for (; angle < 180; angle++)
+        protected override void OnUpdate(float deltaTime)
+        {
+
+        }
+
+        private bool isDraw = false;
+
+        /// <summary>
+        /// 
+        /// // vector3 ( r*cos A, 0, r*sin A  );
+        /// 
+        /// </summary>
+
+        private void OnDrawGizmos()
+        {
+
+            Gizmos.color = Color.red;
+
+            for (int i = 0, len = mPoint.Length; i < len && i + 1 < len; i++)
             {
+                Vector3 source = mPoint[i].position;
+                Vector3 target = mPoint[i + 1].position;
 
-                float degree = ((angle) * Mathf.PI) / 180f;
-                Vector3 next = new Vector3(cirCenter.x + radius * Mathf.Cos(degree), cirCenter.y, cirCenter.z + radius * Mathf.Sin(degree));
-                Gizmos.DrawLine(start, next);
-                start = next;
+                Vector3 start = target;
+                Vector3 cirCenter = (source + target)/2;
+                float radius = Vector3.Distance(source, target)/2;
+
+                Debug.Log(target.x - cirCenter.x);
+
+                float angle = 180*Mathf.Asin((target.z - cirCenter.z)/radius)/(Mathf.PI*radius);
+
+                Debug.Log(angle);
+
+                for (; angle < 180; angle++)
+                {
+
+                    float degree = ((angle)*Mathf.PI)/180f;
+                    Vector3 next = new Vector3(cirCenter.x + radius*Mathf.Cos(degree), cirCenter.y,
+                        cirCenter.z + radius*Mathf.Sin(degree));
+                    Gizmos.DrawLine(start, next);
+                    start = next;
+
+                }
 
             }
 
         }
 
     }
-
 }

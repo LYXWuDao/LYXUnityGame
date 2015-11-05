@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.LYX.Behaviour;
 using UnityEngine;
 using System.Collections;
 

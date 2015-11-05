@@ -1,17 +1,18 @@
 ﻿
 Folder
 
-	LYXBehaviour -- 组件行为库
+	LYXBehaviour -- 定义组件行为,相当于 接口的功能
 
 	LYXCommon   --  公用库
 
-	LYXComponent --  简易组件使用库
+	LYXTools --  简易组件公用库
 
 	Editor  --  编辑器模式下使用库
 
 	LYXSources --  资源使用和管理库
 
+	LYXUI -- ui 界面
 
 Files
 	
-	LYXTestBehavior  --  测试文件
+	LYXTestFramework  --  测试框架文件

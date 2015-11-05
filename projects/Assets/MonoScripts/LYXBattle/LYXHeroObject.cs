@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Game.LYX.Behaviour;
+using Game.LYX.Tools;
 using UnityEngine;
 using System.Collections;
 

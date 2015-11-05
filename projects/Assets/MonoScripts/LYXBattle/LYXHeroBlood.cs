@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Game.LYX.Behaviour;
+using Game.LYX.Common;
+using Game.LYX.Tools;
+using UnityEngine;
 using System.Collections;
 
 /****
