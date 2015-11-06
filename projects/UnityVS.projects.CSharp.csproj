@@ -72,10 +72,17 @@
   <ItemGroup>
     <Compile Include="Assets\Framework\LYXBehaviour\LYXBaseBehaviour.cs" />
     <Compile Include="Assets\Framework\LYXBehaviour\LYXMouseBehaviour.cs" />
+    <Compile Include="Assets\Framework\LYXBehaviour\LYXUIBehaviour.cs" />
     <Compile Include="Assets\Framework\LYXCommon\LYXCompHelper.cs" />
     <Compile Include="Assets\Framework\LYXCommon\LYXEnumEntityHelper.cs" />
     <Compile Include="Assets\Framework\LYXCommon\LYXLogHelper.cs" />
     <Compile Include="Assets\Framework\LYXCommon\LYXPathHelper.cs" />
+    <Compile Include="Assets\Framework\LYXJson\LYXJson.cs" />
+    <Compile Include="Assets\Framework\LYXMessage\LYXLocal\LYXLocalPrefs.cs" />
+    <Compile Include="Assets\Framework\LYXSources\LYXLoadSource.cs" />
+    <Compile Include="Assets\Framework\LYXSources\LYXManageSource.cs" />
+    <Compile Include="Assets\Framework\LYXSources\LYXUnloadSource.cs" />
+    <Compile Include="Assets\Framework\LYXTestFramework.cs" />
     <Compile Include="Assets\Framework\LYXTools\LYXAdaptiveScene.cs" />
     <Compile Include="Assets\Framework\LYXTools\LYXArcTweener.cs" />
     <Compile Include="Assets\Framework\LYXTools\LYXClickEffect.cs" />
@@ -86,13 +93,17 @@
     <Compile Include="Assets\Framework\LYXTools\LYXSelfDestroy.cs" />
     <Compile Include="Assets\Framework\LYXTools\LYXTweener.cs" />
     <Compile Include="Assets\Framework\LYXTools\LYXUIInset3D.cs" />
-    <Compile Include="Assets\Framework\LYXSources\LYXUnloadSource.cs" />
-    <Compile Include="Assets\Framework\LYXSources\LYXLoadSource.cs" />
-    <Compile Include="Assets\Framework\LYXSources\LYXManageSource.cs" />
-    <Compile Include="Assets\Framework\LYXTestFramework.cs" />
-    <Compile Include="Assets\Framework\LYXBehaviour\LYXUIBehaviour.cs" />
     <Compile Include="Assets\Framework\LYXUI\LYXUIManage.cs" />
     <Compile Include="Assets\Framework\LYXUI\LYXUIPage.cs" />
+    <Compile Include="Assets\Framework\LitJson\IJsonWrapper.cs" />
+    <Compile Include="Assets\Framework\LitJson\JsonData.cs" />
+    <Compile Include="Assets\Framework\LitJson\JsonException.cs" />
+    <Compile Include="Assets\Framework\LitJson\JsonMapper.cs" />
+    <Compile Include="Assets\Framework\LitJson\JsonMockWrapper.cs" />
+    <Compile Include="Assets\Framework\LitJson\JsonReader.cs" />
+    <Compile Include="Assets\Framework\LitJson\JsonWriter.cs" />
+    <Compile Include="Assets\Framework\LitJson\Lexer.cs" />
+    <Compile Include="Assets\Framework\LitJson\ParserToken.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleBuffer.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleManage.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXHeroBlood.cs" />
@@ -290,11 +301,11 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+    <None Include="Assets\Serialize.txt" />
     <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Prefabs\Fx\V2\V2_Change.txt" />
     <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\HowtoPlay.txt" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

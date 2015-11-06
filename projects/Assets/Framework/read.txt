@@ -5,6 +5,16 @@ Folder
 
 	LYXCommon   --  公用库
 
+	LYXJson -- json  数据操作库
+
+	LYXMessage  --  通讯
+
+		LYXHttps -- http 通讯
+
+		LYXLocal -- 本地数据保存
+
+		LYXSocket -- socket 通讯
+
 	LYXTools --  简易组件公用库
 
 	Editor  --  编辑器模式下使用库

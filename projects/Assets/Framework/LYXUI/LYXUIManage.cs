@@ -170,8 +170,8 @@ namespace Game.LYX.UI
         /// <param name="pageName">界面名字</param>
         public static bool ClosePage(string pageName)
         {
-            if (string.IsNullOrEmpty(pageName) || !_uiManage.ContainsKey(pageName)) return false;
-            LYXUIPage page = _uiManage[pageName];
+            if (string.IsNullOrEmpty(pageName) || !HasPage(pageName)) return false;
+            LYXUIPage page = GetPageInfo(pageName);
             page.OnClose();
             LYXManageSource.RemoveSource(pageName);
             PageDepth -= DepthSpan;

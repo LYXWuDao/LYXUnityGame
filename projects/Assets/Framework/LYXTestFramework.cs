@@ -1,6 +1,9 @@
-﻿using Game.LYX.Behaviour;
+﻿using System;
+using Game.LYX.Behaviour;
 using Game.LYX.Common;
+using Game.LYX.Message;
 using Game.LYX.UI;
+using LitJson;
 using UnityEngine;
 using System.Collections;
 
@@ -14,11 +17,22 @@ using System.Collections;
 public class LYXTestFramework : LYXBaseBehaviour
 {
 
+    public class Person
+    {
+        public string Name;
+    }
+
     protected override void Awake()
     {
 
-        LYXUIManage.OpenPage("uiBattlePanel", "UI/uiBattlePanel.data");
-        LYXUIManage.ClosePage("uiBattlePanel");
+        Person p = new Person() { Name = "we" };
+
+        string json = JsonMapper.ToJson(new object[] { p, p, p });
+
+        JsonData data = JsonMapper.ToObject(json);
+
+        LYXLogHelper.Log(data.Count);
+
 
     }
 
