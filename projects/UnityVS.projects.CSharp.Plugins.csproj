@@ -65,6 +65,7 @@
     <Compile Include="Assets\Plugins\iTween.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Framework\LYXShader\RimLight.shader" />
     <None Include="Assets\Framework\read.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
@@ -107,7 +108,6 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
-    <None Include="Assets\Serialize.txt" />
     <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Prefabs\Fx\V2\V2_Change.txt" />
     <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\HowtoPlay.txt" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />

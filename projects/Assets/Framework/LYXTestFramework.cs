@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.LYX.Behaviour;
 using Game.LYX.Common;
+using Game.LYX.Json;
 using Game.LYX.Message;
 using Game.LYX.UI;
 using LitJson;
@@ -19,20 +20,35 @@ public class LYXTestFramework : LYXBaseBehaviour
 
     public class Person
     {
-        public string Name;
+        public string Names;
+
+        public string sewe
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public int[] arrs = new[] { 1, 2, 3, 4 };
+
     }
 
     protected override void Awake()
     {
 
-        Person p = new Person() { Name = "we" };
+        Person p = new Person() { Names = "we" };
 
-        string json = JsonMapper.ToJson(new object[] { p, p, p });
+        string json = LYXJson.ToJson(new[] { 1, 2, 3, 4 });
 
-        JsonData data = JsonMapper.ToObject(json);
+        LYXLogHelper.Log(json);
 
-        LYXLogHelper.Log(data.Count);
+        object[] objs = LYXJson.ToArray(json);
 
+        for (int i = 0, len = objs.Length; i < len; i++)
+        {
+            LYXLogHelper.Log(objs[i]);
+        }
 
     }
 
