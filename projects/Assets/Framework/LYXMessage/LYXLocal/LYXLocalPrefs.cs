@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using Game.LYX.Json;
 using UnityEngine;
 
 namespace Game.LYX.Message
@@ -88,6 +89,7 @@ namespace Game.LYX.Message
         /// <param name="value">值</param>
         public static void AddInt(string key, int value)
         {
+            if (string.IsNullOrEmpty(key)) return;
             PlayerPrefs.SetInt(key, value);
             if (!HasPrefsKey(key)) PrefsKeys.Add(key);
         }
@@ -99,6 +101,7 @@ namespace Game.LYX.Message
         /// <param name="value">值</param>
         public static void AddFloat(string key, float value)
         {
+            if (string.IsNullOrEmpty(key)) return;
             PlayerPrefs.SetFloat(key, value);
             if (!HasPrefsKey(key)) PrefsKeys.Add(key);
         }
@@ -110,6 +113,7 @@ namespace Game.LYX.Message
         /// <param name="value">值</param>
         public static void AddString(string key, string value)
         {
+            if (string.IsNullOrEmpty(key)) return;
             PlayerPrefs.SetString(key, value);
             if (!HasPrefsKey(key)) PrefsKeys.Add(key);
         }
@@ -121,7 +125,8 @@ namespace Game.LYX.Message
         /// <param name="value"></param>
         public static void AddJson<T>(string key, T value)
         {
-
+            if (string.IsNullOrEmpty(key)) return;
+            AddString(key, LYXJson.ToJson(value));
         }
 
         /// <summary>
@@ -131,7 +136,8 @@ namespace Game.LYX.Message
         /// <param name="value"></param>
         public static void AddJson(string key, string value)
         {
-
+            if (string.IsNullOrEmpty(key)) return;
+            AddString(key, value);
         }
 
         /// <summary>
@@ -141,6 +147,7 @@ namespace Game.LYX.Message
         /// <returns></returns>
         public static int GetInt(string key)
         {
+            if (string.IsNullOrEmpty(key)) return 0;
             return PlayerPrefs.GetInt(key, 0);
         }
 
@@ -165,6 +172,7 @@ namespace Game.LYX.Message
         /// <returns></returns>
         public static float GetFloat(string key)
         {
+            if (string.IsNullOrEmpty(key)) return 0;
             return PlayerPrefs.GetFloat(key, 0);
         }
 
@@ -183,12 +191,13 @@ namespace Game.LYX.Message
         }
 
         /// <summary>
-        /// 得到浮点型数据
+        /// 得到字符串型数据
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static String Getv(string key)
+        public static String GetString(string key)
         {
+            if (string.IsNullOrEmpty(key)) return string.Empty;
             return PlayerPrefs.GetString(key, string.Empty);
         }
 
@@ -204,6 +213,30 @@ namespace Game.LYX.Message
             if (!HasPrefsKey(key)) return false;
             value = PlayerPrefs.GetString(key);
             return true;
+        }
+
+        /// <summary>
+        /// 得到 json 数据
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static LYXJson GetJson(string key)
+        {
+            if (string.IsNullOrEmpty(key)) return null;
+            string json = GetString(key);
+            return string.IsNullOrEmpty(json) ? null : new LYXJson(json);
+        }
+
+        /// <summary>
+        /// 得到 json 数据
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static T GetJson<T>(string key)
+        {
+            if (string.IsNullOrEmpty(key)) return default(T);
+            string json = GetString(key);
+            return LYXJson.ToObejct<T>(json);
         }
 
         /// <summary>

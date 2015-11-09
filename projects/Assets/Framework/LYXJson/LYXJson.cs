@@ -71,7 +71,7 @@ namespace Game.LYX.Json
         /// <returns></returns>
         public static string ToJson(object[] obj)
         {
-            return JsonMapper.ToJson(obj);
+            return obj == null ? null : JsonMapper.ToJson(obj);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Game.LYX.Json
         /// <returns></returns>
         public static T ToObejct<T>(string json)
         {
-            return JsonMapper.ToObject<T>(json);
+            return string.IsNullOrEmpty(json) ? default(T) : JsonMapper.ToObject<T>(json);
         }
 
         /// <summary>
