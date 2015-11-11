@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
-public class LYXSourcePackage : LABehaviour
+public class LCSSourcePackage : LABehaviour
 {
 
     /// <summary>

@@ -106,7 +106,7 @@
     <Compile Include="Assets\Framework\LModule\LSources\LCSUnloadSource.cs" />
     <Compile Include="Assets\Framework\LModule\LUI\LCSUIManage.cs" />
     <Compile Include="Assets\Framework\LModule\LUI\LCUIPage.cs" />
-    <Compile Include="Assets\Framework\LTestFramework.cs" />
+    <Compile Include="Assets\Framework\LCTestFramework.cs" />
     <Compile Include="Assets\Framework\LUtils\LCAdaptiveScene.cs" />
     <Compile Include="Assets\Framework\LUtils\LCArcTweener.cs" />
     <Compile Include="Assets\Framework\LUtils\LCClickEffect.cs" />

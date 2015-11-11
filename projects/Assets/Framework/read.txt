@@ -1,30 +1,36 @@
 ﻿
 Folder
 
-	LYXCommon   --  公用库
+	LCommon   --  公用库
 
-	LYXModule -- 所有模块
+	LModule -- 所有模块
 		
-		LYXBase -- 基础模块
+		LBase -- 基础模块
 
-		LYXJson -- json  数据操作模块
+		LJson -- json  数据操作模块
 
-		LYXMessage  --  通讯模块
+		LLog -- 日志管理模块
 
-			LYXHttps -- http 通讯
+		LMessage  --  通讯模块
 
-			LYXLocal -- 本地数据保存
+			LHttps -- http 通讯
 
-			LYXSocket -- socket 通讯
+			LLocal -- 本地数据保存
 
-		LYXSources --  资源管理模块
+			LSocket -- socket 通讯
 
-		LYXUI -- ui 界面管理模块
+		LProfiler -- 系统分析器模块
 
-	LYXUtils --  简易实用组件公用库
+		LShader -- shader 管理模块
+
+		LSources --  资源管理模块
+
+		LUI -- ui 界面管理模块
+
+	LUtils --  简易实用组件公用库
 
 	Editor  --  编辑器模式下使用库
 
 Files
 	
-	LYXTestFramework  --  测试框架文件
+	LCTestFramework  --  测试框架文件

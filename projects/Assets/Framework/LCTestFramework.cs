@@ -8,7 +8,7 @@
  * 
  */
 
-public class LTestFramework : LABehaviour
+public class LCTestFramework : LABehaviour
 {
 
     public override void Awake()
