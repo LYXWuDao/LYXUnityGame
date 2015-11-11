@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Game.LYX.Behaviour;
-using Game.LYX.Tools;
+using Game.LBehaviour;
+using Game.LUtils;
 using UnityEngine;
 using System.Collections;
 
@@ -14,7 +14,7 @@ using System.Collections;
  * 
  */
 
-public class LYXHeroObject : LYXBaseBehaviour
+public class LYXHeroObject : LABehaviour
 {
 
     /// <summary>
@@ -76,7 +76,7 @@ public class LYXHeroObject : LYXBaseBehaviour
     /// </summary>
     private float _curShortSpeed = 0;
 
-    protected override void Start()
+    public override void Start()
     {
         _startBattle = false;
         _isControlPause = false;
@@ -87,7 +87,7 @@ public class LYXHeroObject : LYXBaseBehaviour
         PlayAnimation("run");
     }
 
-    protected override void OnUpdate(float deltaTime)
+    public override void OnUpdate(float deltaTime)
     {
         if (_isControlPause) return;
 
@@ -221,7 +221,7 @@ public class LYXHeroObject : LYXBaseBehaviour
         if (mTargetHero == null) return;
         mHeroEnity.CurrentAnger += mHeroEnity.AttackHit * 5;
         mTargetHero.OnPlayHit(mHeroEnity.AttackHit);
-        LYXDelayAction.BeginAction(gameObject, 0.3f, delegate()
+        LCDelayAction.BeginAction(gameObject, 0.3f, delegate()
         {
             CreateEffects(mHeroEnity.AttackSkillId, null);
         });

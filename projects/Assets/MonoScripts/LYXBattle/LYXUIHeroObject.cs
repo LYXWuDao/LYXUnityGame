@@ -1,5 +1,5 @@
-﻿using Game.LYX.Behaviour;
-using Game.LYX.Common;
+﻿using Game.LBehaviour;
+using Game.LCommon;
 using UnityEngine;
 using System.Collections;
 
@@ -11,7 +11,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUIHeroObject : LYXBaseBehaviour
+public class LYXUIHeroObject : LABehaviour
 {
     /// <summary>
     /// 战斗管理
@@ -65,10 +65,10 @@ public class LYXUIHeroObject : LYXBaseBehaviour
         _isStartRefresh = true;
 
         // 血条
-        bloodSlider = LYXCompHelper.FindComponet<UISlider>(gameObject, "roleblood/blood/bloodslider");
+        bloodSlider = LCSCompHelper.FindComponet<UISlider>(gameObject, "roleblood/blood/bloodslider");
         //怒气
-        angSlider = LYXCompHelper.FindComponet<UISlider>(gameObject, "roleblood/anger/angerslider");
-        heroDieSpr = LYXCompHelper.FindComponet<UISprite>(gameObject, "die");
+        angSlider = LCSCompHelper.FindComponet<UISlider>(gameObject, "roleblood/anger/angerslider");
+        heroDieSpr = LCSCompHelper.FindComponet<UISprite>(gameObject, "die");
 
         heroDieSpr.gameObject.SetActive(false);
         mTweenRota = TweenRotation.Begin(gameObject, 0.1f, Quaternion.identity);
@@ -76,7 +76,7 @@ public class LYXUIHeroObject : LYXBaseBehaviour
         isHasTween = false;
     }
 
-    protected override void OnUpdate(float deltaTime)
+    public override void OnUpdate(float deltaTime)
     {
         if (isUiPasue) return;
         if (!_isStartRefresh) return;

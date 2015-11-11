@@ -1,27 +1,29 @@
 ﻿
 Folder
 
-	LYXBehaviour -- 定义组件行为,相当于 接口的功能
-
 	LYXCommon   --  公用库
 
-	LYXJson -- json  数据操作库
+	LYXModule -- 所有模块
+		
+		LYXBase -- 基础模块
 
-	LYXMessage  --  通讯
+		LYXJson -- json  数据操作模块
 
-		LYXHttps -- http 通讯
+		LYXMessage  --  通讯模块
 
-		LYXLocal -- 本地数据保存
+			LYXHttps -- http 通讯
 
-		LYXSocket -- socket 通讯
+			LYXLocal -- 本地数据保存
 
-	LYXTools --  简易组件公用库
+			LYXSocket -- socket 通讯
+
+		LYXSources --  资源管理模块
+
+		LYXUI -- ui 界面管理模块
+
+	LYXUtils --  简易实用组件公用库
 
 	Editor  --  编辑器模式下使用库
-
-	LYXSources --  资源使用和管理库
-
-	LYXUI -- ui 界面
 
 Files
 	

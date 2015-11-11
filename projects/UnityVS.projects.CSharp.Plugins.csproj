@@ -65,7 +65,7 @@
     <Compile Include="Assets\Plugins\iTween.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Framework\LYXShader\RimLight.shader" />
+    <None Include="Assets\Framework\LModule\LShader\RimLight.shader" />
     <None Include="Assets\Framework\read.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
@@ -112,6 +112,7 @@
     <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\HowtoPlay.txt" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+    <None Include="Assets\log.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

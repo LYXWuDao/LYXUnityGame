@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Game.LYX.Behaviour;
-using Game.LYX.Common;
+using Game.LBehaviour;
+using Game.LCommon;
 using UnityEngine;
 
 /***
@@ -11,7 +11,7 @@ using UnityEngine;
  * 
  */
 
-public class LYXBattleManage : LYXBaseBehaviour
+public class LYXBattleManage : LABehaviour
 {
 
     /// <summary>
@@ -74,7 +74,7 @@ public class LYXBattleManage : LYXBaseBehaviour
     /// </summary>
     private bool _isIntoBattle = false;
 
-    protected override void Start()
+    public override void Start()
     {
         _isIntoBattle = false;
         // 获得战斗的侠客
@@ -86,7 +86,7 @@ public class LYXBattleManage : LYXBaseBehaviour
         mUIBattle.InitBattleUI(this, ownList);
     }
 
-    protected override void OnUpdate(float deltaTime)
+    public override void OnUpdate(float deltaTime)
     {
         if (_isIntoBattle)
         {
@@ -112,7 +112,7 @@ public class LYXBattleManage : LYXBaseBehaviour
         for (int i = 0, len = _heroEntityList.Count; i < len; i++)
         {
             LYXHeroEntity own = _heroEntityList[i];
-            LYXHeroObject ownObject = LYXCompHelper.LoadResource<LYXHeroObject>("RoleModel/" + own.HeroModel);
+            LYXHeroObject ownObject = LCSCompHelper.LoadResource<LYXHeroObject>("RoleModel/" + own.HeroModel);
             if (ownObject == null) continue;
             ownObject.mHeroEnity = own;
             ownObject.mMoveEndPos = mEndMovePos;
@@ -135,7 +135,7 @@ public class LYXBattleManage : LYXBaseBehaviour
     public void InitHeroObjectPosition(Transform current, string parentPath)
     {
         if (!string.IsNullOrEmpty(parentPath))
-            current.parent = LYXCompHelper.FindTransform(mBattleFormation, parentPath);
+            current.parent = LCSCompHelper.FindTransform(mBattleFormation, parentPath);
         current.localPosition = Vector3.zero;
         current.localRotation = Quaternion.identity;
         current.localScale = Vector3.one;

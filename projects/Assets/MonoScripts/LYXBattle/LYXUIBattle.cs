@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Game.LYX.Behaviour;
+using Game.LBehaviour;
 using UnityEngine;
 using System.Collections;
 
@@ -11,7 +11,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUIBattle : LYXBaseBehaviour
+public class LYXUIBattle : LABehaviour
 {
 
     /// <summary>
@@ -31,7 +31,7 @@ public class LYXUIBattle : LYXBaseBehaviour
     /// </summary>
     private List<LYXHeroEntity> _batHeroList;
 
-    protected override void Start()
+    public override void Start()
     {
 
     }

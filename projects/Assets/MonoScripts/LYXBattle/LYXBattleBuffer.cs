@@ -1,9 +1,9 @@
-﻿using Game.LYX.Behaviour;
-using Game.LYX.Common;
+﻿using Game.LBehaviour;
+using Game.LCommon;
 using UnityEngine;
 using System.Collections;
 
-public class LYXBattleBuffer : LYXBaseBehaviour
+public class LYXBattleBuffer : LABehaviour
 {
 
     /// <summary>
@@ -16,7 +16,7 @@ public class LYXBattleBuffer : LYXBaseBehaviour
     /// <returns></returns>
     public static LYXBattleBuffer CreateHarm(GameObject parent, GameObject target, float hurtValue, Vector3 offect)
     {
-        LYXBattleBuffer buffer = LYXCompHelper.LoadResource<LYXBattleBuffer>("Prefab/hurtvalue");
+        LYXBattleBuffer buffer = LCSCompHelper.LoadResource<LYXBattleBuffer>("Prefab/hurtvalue");
         UILabel lab = buffer.GetComponent<UILabel>();
         if (lab == null) return null;
         lab.text = "[ff0000] -" + hurtValue;

@@ -1,11 +1,11 @@
-﻿using Game.LYX.Behaviour;
+﻿using Game.LBehaviour;
 using UnityEngine;
 using System.Collections;
 
-public class LYXTest : LYXBaseBehaviour
+public class LYXTest : LABehaviour
 {
 
-    protected override void Start()
+    public override void Start()
     {
 
     }

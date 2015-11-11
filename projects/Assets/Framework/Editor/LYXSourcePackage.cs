@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using Game.LYX.Behaviour;
+using Game.LBehaviour;
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
-public class LYXSourcePackage : LYXBaseBehaviour
+public class LYXSourcePackage : LABehaviour
 {
 
     /// <summary>

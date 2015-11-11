@@ -1,6 +1,6 @@
-﻿using Game.LYX.Behaviour;
-using Game.LYX.Common;
-using Game.LYX.Tools;
+﻿using Game.LBehaviour;
+using Game.LCommon;
+using Game.LUtils;
 using UnityEngine;
 using System.Collections;
 
@@ -12,7 +12,7 @@ using System.Collections;
  * 
  */
 
-public class LYXHeroBlood : LYXBaseBehaviour
+public class LYXHeroBlood : LABehaviour
 {
     /// <summary>
     /// 保存当前侠客数据
@@ -61,7 +61,7 @@ public class LYXHeroBlood : LYXBaseBehaviour
         btrans.localPosition = Vector3.zero;
         btrans.localRotation = Quaternion.identity;
         btrans.localScale = Vector3.one;
-        LYXHeroBlood blood = LYXCompHelper.FindComponet<LYXHeroBlood>(bgo);
+        LYXHeroBlood blood = LCSCompHelper.FindComponet<LYXHeroBlood>(bgo);
         // 血条
         blood.bloodSlider = btrans.Find("blood/bloodslider").GetComponent<UISlider>();
         //怒气
@@ -82,7 +82,7 @@ public class LYXHeroBlood : LYXBaseBehaviour
         angSlider.value = mHeroEntity.CurrentAnger / mHeroEntity.MaxAnger;
     }
 
-    protected override void OnUpdate(float deltaTime)
+    public override void OnUpdate(float deltaTime)
     {
         if (!mIsRefresh) return;
         if (mBloodTime <= 0)
@@ -106,7 +106,7 @@ public class LYXHeroBlood : LYXBaseBehaviour
     public void SetBloodPostion(GameObject target, Vector3 offect)
     {
         if (target == null) return;
-        LYXUIInset3D uiInset = LYXCompHelper.FindComponet<LYXUIInset3D>(gameObject);
+        LCUIInset3D uiInset = LCSCompHelper.FindComponet<LCUIInset3D>(gameObject);
         if (uiInset == null) return;
         uiInset.mOffset = offect;
         uiInset.mTarget = target;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.LYX.Behaviour;
-using Game.LYX.Common;
-using Game.LYX.Tools;
+using Game.LBehaviour;
+using Game.LCommon;
+using Game.LUtils;
 using UnityEngine;
 
 /***
@@ -13,7 +13,7 @@ using UnityEngine;
  * 
  */
 
-public class LYXSkillEffects : LYXBaseBehaviour
+public class LYXSkillEffects : LABehaviour
 {
     /// <summary>
     ///   args 
@@ -58,7 +58,7 @@ public class LYXSkillEffects : LYXBaseBehaviour
     /// <returns></returns>
     public static LYXSkillEffects CreateEffects(string effName, Transform parent)
     {
-        LYXSkillEffects effects = LYXCompHelper.LoadAndInstance<LYXSkillEffects>("Effects/" + effName, parent);
+        LYXSkillEffects effects = LCSCompHelper.LoadAndInstance<LYXSkillEffects>("Effects/" + effName, parent);
         if (effects == null) return null;
         return effects;
     }
@@ -122,7 +122,7 @@ public class LYXSkillEffects : LYXBaseBehaviour
     /// <summary>
     /// 销毁器
     /// </summary>
-    private LYXSelfDestroy mDestroy;
+    private LCSelfDestroy mDestroy;
 
     /// <summary>
     /// 得到参数中的技能对象
@@ -197,7 +197,7 @@ public class LYXSkillEffects : LYXBaseBehaviour
         effects.mTweenPos.to = effects.mTargetObj.transform.position + effects.mOffset + new Vector3(0, 0, -5f);
         effects.mTweenPos.AddOnFinished(effects.ClearEffect);
         effects.mTweenPos.Play();
-        LYXDelayAction.BeginAction(effects.gameObject, 0.6f, delegate()
+        LCDelayAction.BeginAction(effects.gameObject, 0.6f, delegate()
         {
             if (effects.mSkillEntity != null || !effects.mTargetObj.mHeroEnity.IsHeroDie)
                 effects.mTargetObj.CreateEffects(effects.mSkillEntity.NextSkillId, effects.mTargetObj.transform);
@@ -215,7 +215,7 @@ public class LYXSkillEffects : LYXBaseBehaviour
         effects.SetEffectRotation(new Vector3(0, 180f, 0));
         effects.SetEffectOffset(new Vector3(0, 4f, 4f));
         effects.SetEffectScale(3);
-        effects.mDestroy = LYXSelfDestroy.Begin(effects.gameObject, 2f);
+        effects.mDestroy = LCSelfDestroy.Begin(effects.gameObject, 2f);
     }
 
 }

@@ -1,4 +1,4 @@
-﻿using Game.LYX.Behaviour;
+﻿using Game.LBehaviour;
 using UnityEngine;
 using System.Collections;
 
@@ -10,7 +10,7 @@ using System.Collections;
  * 
  */
 
-public class LYXUILookAt3D : LYXBaseBehaviour
+public class LYXUILookAt3D : LABehaviour
 {
 
     /// <summary>
@@ -33,14 +33,14 @@ public class LYXUILookAt3D : LYXBaseBehaviour
     /// </summary>
     [System.NonSerialized] private Vector3 mSaveTagPos;
 
-    protected override void Start()
+    public override void Start()
     {
         if (mainCamera == null) mainCamera = Camera.main;
         if (uiCamera == null) uiCamera = FindObjectOfType<UICamera>();
         mSaveTagPos = Vector3.one * -1000;
     }
 
-    protected override void OnUpdate(float deltaTime)
+    public override void OnUpdate(float deltaTime)
     {
         if (mTarget == null) return;
         Vector3 tagPos = mTarget.transform.position;

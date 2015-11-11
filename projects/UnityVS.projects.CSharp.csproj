@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>4.6.7f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,40 +70,53 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Framework\LYXBehaviour\LYXBaseBehaviour.cs" />
-    <Compile Include="Assets\Framework\LYXBehaviour\LYXMouseBehaviour.cs" />
-    <Compile Include="Assets\Framework\LYXBehaviour\LYXUIBehaviour.cs" />
-    <Compile Include="Assets\Framework\LYXCommon\LYXCompHelper.cs" />
-    <Compile Include="Assets\Framework\LYXCommon\LYXEnumEntityHelper.cs" />
-    <Compile Include="Assets\Framework\LYXCommon\LYXLogHelper.cs" />
-    <Compile Include="Assets\Framework\LYXCommon\LYXPathHelper.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LYXJson.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\IJsonWrapper.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\JsonData.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\JsonException.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\JsonMapper.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\JsonMockWrapper.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\JsonReader.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\JsonWriter.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\Lexer.cs" />
-    <Compile Include="Assets\Framework\LYXJson\LitJson\ParserToken.cs" />
-    <Compile Include="Assets\Framework\LYXMessage\LYXLocal\LYXLocalPrefs.cs" />
-    <Compile Include="Assets\Framework\LYXSources\LYXLoadSource.cs" />
-    <Compile Include="Assets\Framework\LYXSources\LYXManageSource.cs" />
-    <Compile Include="Assets\Framework\LYXSources\LYXUnloadSource.cs" />
-    <Compile Include="Assets\Framework\LYXTestFramework.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXAdaptiveScene.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXArcTweener.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXClickEffect.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXDelayAction.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXDragEvent.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXLineTweener.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXProfilerBehavior.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXSelfDestroy.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXTweener.cs" />
-    <Compile Include="Assets\Framework\LYXTools\LYXUIInset3D.cs" />
-    <Compile Include="Assets\Framework\LYXUI\LYXUIManage.cs" />
-    <Compile Include="Assets\Framework\LYXUI\LYXUIPage.cs" />
+    <Compile Include="Assets\Framework\LCommon\LCSCompHelper.cs" />
+    <Compile Include="Assets\Framework\LCommon\LEnumEntityHelper.cs" />
+    <Compile Include="Assets\Framework\LCommon\LCSPathHelper.cs" />
+    <Compile Include="Assets\Framework\LModule\LProfiler\LAWatch.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LCBaseBehaviour.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LABehaviour.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LIBehaviour.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LAMouseBehaviour.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LAUIBehaviour.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LCJson.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\IJsonWrapper.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonData.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonException.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonMapper.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonMockWrapper.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonReader.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonWriter.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\Lexer.cs" />
+    <Compile Include="Assets\Framework\LModule\LJson\LitJson\ParserToken.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCLogConsole.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCSLogConsole.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCLogFile.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCLogGUI.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCSLogFile.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCSLogGUI.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LILog.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCSLog.cs" />
+    <Compile Include="Assets\Framework\LModule\LMessage\LLocal\LCSLocalPrefs.cs" />
+    <Compile Include="Assets\Framework\LModule\LProfiler\LCRecordTime.cs" />
+    <Compile Include="Assets\Framework\LModule\LProfiler\LCRecordWatch.cs" />
+    <Compile Include="Assets\Framework\LModule\LProfiler\LIWatch.cs" />
+    <Compile Include="Assets\Framework\LModule\LSources\LCSLoadSource.cs" />
+    <Compile Include="Assets\Framework\LModule\LSources\LCSManageSource.cs" />
+    <Compile Include="Assets\Framework\LModule\LSources\LCSUnloadSource.cs" />
+    <Compile Include="Assets\Framework\LModule\LUI\LCSUIManage.cs" />
+    <Compile Include="Assets\Framework\LModule\LUI\LCUIPage.cs" />
+    <Compile Include="Assets\Framework\LTestFramework.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCAdaptiveScene.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCArcTweener.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCClickEffect.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCDelayAction.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCDragEvent.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCLineTweener.cs" />
+    <Compile Include="Assets\Framework\LModule\LProfiler\LCProfiler.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCSelfDestroy.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCTweener.cs" />
+    <Compile Include="Assets\Framework\LUtils\LCUIInset3D.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleBuffer.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXBattleManage.cs" />
     <Compile Include="Assets\MonoScripts\LYXBattle\LYXHeroBlood.cs" />
@@ -257,7 +272,7 @@
     <Compile Include="Assets\Terrain\LYXUILookAt3D.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Framework\LYXShader\RimLight.shader" />
+    <None Include="Assets\Framework\LModule\LShader\RimLight.shader" />
     <None Include="Assets\Framework\read.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
@@ -304,6 +319,8 @@
     <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\HowtoPlay.txt" />
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+    <None Include="Assets\log.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>
