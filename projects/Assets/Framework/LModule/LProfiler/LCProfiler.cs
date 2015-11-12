@@ -26,14 +26,16 @@ namespace Game.LProfiler
     {
 
         /// <summary>
-        /// 转换成 mb
+        /// 开始分析
+        /// 
+        /// 自己创建一个节点
         /// </summary>
-        private float kBSize = 1024.0f * 1024.0f;
-
-        /// <summary>
-        /// 是否分析内存
-        /// </summary>
-        public bool IsProfiler = true;
+        /// <returns></returns>
+        public static LCProfiler BeginProfiler()
+        {
+            GameObject create = LCSCompHelper.Create("_Profiler");
+            return BeginProfiler(create);
+        }
 
         /// <summary>
         /// 开始分析
@@ -41,10 +43,7 @@ namespace Game.LProfiler
         /// <returns></returns>
         public static LCProfiler BeginProfiler(GameObject go)
         {
-            if (go == null) return null;
-            LCProfiler profiler = LCSCompHelper.FindComponet<LCProfiler>(go);
-            profiler.IsProfiler = true;
-            return profiler;
+            return go == null ? null : LCSCompHelper.FindComponet<LCProfiler>(go);
         }
 
         /// <summary>
@@ -52,12 +51,12 @@ namespace Game.LProfiler
         /// </summary>
         public override void OnGUI()
         {
-            if (!IsProfiler) return;
+            if (!LCSConfig.IsProfiler) return;
 
-            GUI.Label(new Rect(0, 0, 200, 25), string.Format("MonoUsedSize:{0}", Profiler.GetMonoUsedSize() / kBSize));
+            GUI.Label(new Rect(0, 0, 200, 25), string.Format("MonoUsedSize:{0}", Profiler.GetMonoUsedSize() / LCSConfig.KbSize));
             GUI.Label(new Rect(0, 15, 200, 25),
-                string.Format("Allocated:{0}", Profiler.GetTotalAllocatedMemory() / kBSize));
-            GUI.Label(new Rect(0, 30, 200, 25), string.Format("Reserved:{0}", Profiler.GetTotalReservedMemory() / kBSize));
+                string.Format("Allocated:{0}", Profiler.GetTotalAllocatedMemory() / LCSConfig.KbSize));
+            GUI.Label(new Rect(0, 30, 200, 25), string.Format("Reserved:{0}", Profiler.GetTotalReservedMemory() / LCSConfig.KbSize));
         }
 
     }

@@ -15,13 +15,12 @@ namespace Game.LDebug
      * 
      */
 
-    public class LCLogGUI : LABehaviour, LILog
+    public class LCLogGUI : LABehaviour, LIDeBug
     {
-
         /// <summary>
         /// 输出日志列表
         /// </summary>
-        private static List<GuiDebugEntity> _guiLogs = new List<GuiDebugEntity>();
+        private static List<GuiLogEntity> _guiLogs = new List<GuiLogEntity>();
 
         /// <summary>
         /// 当前类的实例
@@ -52,9 +51,9 @@ namespace Game.LDebug
         /// <param name="color">日志颜色</param>
         private void Write(string log, Color color)
         {
-            if (!LCSLog.IsDebugMode || string.IsNullOrEmpty(log)) return;
+            if (!LCSConfig.IsDebugMode || string.IsNullOrEmpty(log)) return;
             if (_guiLogs.Count >= 20) _guiLogs.RemoveAt(0);
-            _guiLogs.Add(new GuiDebugEntity
+            _guiLogs.Add(new GuiLogEntity
             {
                 LogString = log,
                 LogColor = color
@@ -86,7 +85,7 @@ namespace Game.LDebug
         /// <param name="args"></param>
         public void Write(params object[] args)
         {
-            if (!LCSLog.IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             for (int i = 0; i < args.Length; ++i)
             {
@@ -121,7 +120,7 @@ namespace Game.LDebug
         /// <param name="args"></param>
         public void WriteError(params object[] args)
         {
-            if (!LCSLog.IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             for (int i = 0; i < args.Length; ++i)
             {
@@ -156,7 +155,7 @@ namespace Game.LDebug
         /// <param name="args"></param>
         public void WriteWarning(params object[] args)
         {
-            if (!LCSLog.IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             for (int i = 0; i < args.Length; ++i)
             {
@@ -180,12 +179,12 @@ namespace Game.LDebug
         /// </summary>
         public override void OnGUI()
         {
-            if (!LCSLog.IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             Rect rect = new Rect(5f, 5f, 1000f, 18f);
 
             for (int i = 0, imax = _guiLogs.Count; i < imax; ++i)
             {
-                GuiDebugEntity entity = _guiLogs[i];
+                GuiLogEntity entity = _guiLogs[i];
                 GUI.color = Color.black;
                 GUI.Label(rect, entity.LogString);
                 rect.y -= 1f;

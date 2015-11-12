@@ -12,10 +12,8 @@ namespace Game.LDebug
      * 
      */
 
-    public class LCSLogGUI : LCSLog
+    public static class LCSLogGUI
     {
-
-        private LCSLogGUI() { }
 
         private static LCLogGUI _logGui = null;
 
@@ -32,7 +30,7 @@ namespace Game.LDebug
         /// 写日志 log 类型的
         /// </summary>
         /// <param name="msg">输出日志</param>
-        public static new void Write(object msg)
+        public static void Write(object msg)
         {
             Instance.Write(msg);
         }
@@ -42,7 +40,7 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        public static new void Write(string msg, params object[] args)
+        public static void Write(string msg, params object[] args)
         {
             Instance.Write(msg, args);
         }
@@ -51,7 +49,7 @@ namespace Game.LDebug
         /// 输出格式化数据
         /// </summary>
         /// <param name="args"></param>
-        public static new void Write(params object[] args)
+        public static void Write(params object[] args)
         {
             Instance.Write(args);
         }
@@ -60,7 +58,7 @@ namespace Game.LDebug
         /// 输出错误
         /// </summary>
         /// <param name="msg"></param>
-        public static new void WriteError(object msg)
+        public static void WriteError(object msg)
         {
             Instance.WriteError(msg);
         }
@@ -70,7 +68,7 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        public static new void WriteError(string msg, params object[] args)
+        public static void WriteError(string msg, params object[] args)
         {
             Instance.WriteError(msg, args);
         }
@@ -79,7 +77,7 @@ namespace Game.LDebug
         /// 输出错误
         /// </summary>
         /// <param name="args"></param>
-        public static new void WriteError(params object[] args)
+        public static void WriteError(params object[] args)
         {
             Instance.WriteError(args);
         }
@@ -88,7 +86,7 @@ namespace Game.LDebug
         /// 输出警告
         /// </summary>
         /// <param name="msg"></param>
-        public static new void WriteWarning(object msg)
+        public static void WriteWarning(object msg)
         {
             Instance.WriteWarning(msg);
         }
@@ -98,7 +96,7 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        public static new void WriteWarning(string msg, params object[] args)
+        public static void WriteWarning(string msg, params object[] args)
         {
             Instance.WriteWarning(msg, args);
         }
@@ -107,7 +105,7 @@ namespace Game.LDebug
         /// 输出警告
         /// </summary>
         /// <param name="args"></param>
-        public static new void WriteWarning(params object[] args)
+        public static void WriteWarning(params object[] args)
         {
             Instance.WriteWarning(args);
         }
@@ -115,9 +113,10 @@ namespace Game.LDebug
         /// <summary>
         /// 清理界面上的日志
         /// </summary>
-        public static new void Clear()
+        public static void Clear()
         {
             Instance.OnClear();
+            _logGui = null;
         }
 
     }

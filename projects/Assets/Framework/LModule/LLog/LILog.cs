@@ -6,9 +6,11 @@ namespace Game.LDebug
      * 
      *  debug  输出日志接口类
      * 
+     * 标准化输出日志函数
+     * 
      */
 
-    public interface LILog
+    public interface LIDeBug
     {
 
         /// <summary>

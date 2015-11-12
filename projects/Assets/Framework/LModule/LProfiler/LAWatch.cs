@@ -38,6 +38,7 @@ namespace Game.LProfiler
                 _recordEnitys[entity.WatchKey] = entity;
             else
                 _recordEnitys.Add(entity.WatchKey, entity);
+            CurrentWatch = entity;
         }
 
         /// <summary>
@@ -60,6 +61,7 @@ namespace Game.LProfiler
         {
             if (string.IsNullOrEmpty(watchKey) || !_recordEnitys.ContainsKey(watchKey)) return;
             _recordEnitys.Remove(watchKey);
+            CurrentWatch = null;
         }
 
         /// <summary>
@@ -85,7 +87,7 @@ namespace Game.LProfiler
         /// </summary>
         public RecordWatchEntity CurrentWatch
         {
-            protected set
+            private set
             {
                 _currentWatch = value;
             }

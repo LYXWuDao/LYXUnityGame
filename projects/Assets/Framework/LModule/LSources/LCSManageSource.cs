@@ -69,12 +69,12 @@ namespace Game.LSource
         {
             if (string.IsNullOrEmpty(resName))
             {
-                LCSLogConsole.WriteError("移出的资源名字为空！,resName = " + resName);
+                LCSConsole.WriteError("移出的资源名字为空！,resName = " + resName);
                 return null;
             }
             if (!CacheSource.ContainsKey(resName))
             {
-                LCSLogConsole.WriteError("移出的资源不存在！,resName = " + resName);
+                LCSConsole.WriteError("移出的资源不存在！,resName = " + resName);
                 return null;
             }
             LoadSourceEntity entity = CacheSource[resName];

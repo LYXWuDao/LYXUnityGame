@@ -16,19 +16,31 @@ namespace Game.LProfiler
     {
 
         /// <summary>
-        /// 添加性能观察
+        /// 开始性能观察
         /// </summary>
         void StartWatch();
 
         /// <summary>
-        /// 添加性能观察
+        /// 开始性能观察
         /// </summary>
         void StartWatch(string key);
 
         /// <summary>
-        /// 添加性能观察
+        /// 结束性能观察
         /// </summary>
-        void EndWatch();
+        double EndWatch();
+
+        /// <summary>
+        /// 得到观察的时间
+        /// 
+        /// 如果已经清除默认返回 0
+        /// </summary>
+        double GetWatchTime();
+
+        /// <summary>
+        /// 清除性能观察
+        /// </summary>
+        void ClearWatch();
 
     }
 

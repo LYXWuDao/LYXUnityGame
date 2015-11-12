@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Framework\LCommon\LCSCompHelper.cs" />
-    <Compile Include="Assets\Framework\LCommon\LEnumEntityHelper.cs" />
+    <Compile Include="Assets\Framework\LCommon\LCommonHelper.cs" />
     <Compile Include="Assets\Framework\LCommon\LCSPathHelper.cs" />
     <Compile Include="Assets\Framework\LModule\LProfiler\LAWatch.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LCBaseBehaviour.cs" />
@@ -89,14 +89,11 @@
     <Compile Include="Assets\Framework\LModule\LJson\LitJson\JsonWriter.cs" />
     <Compile Include="Assets\Framework\LModule\LJson\LitJson\Lexer.cs" />
     <Compile Include="Assets\Framework\LModule\LJson\LitJson\ParserToken.cs" />
-    <Compile Include="Assets\Framework\LModule\LLog\LCLogConsole.cs" />
-    <Compile Include="Assets\Framework\LModule\LLog\LCSLogConsole.cs" />
-    <Compile Include="Assets\Framework\LModule\LLog\LCLogFile.cs" />
+    <Compile Include="Assets\Framework\LModule\LLog\LCSConsole.cs" />
     <Compile Include="Assets\Framework\LModule\LLog\LCLogGUI.cs" />
     <Compile Include="Assets\Framework\LModule\LLog\LCSLogFile.cs" />
     <Compile Include="Assets\Framework\LModule\LLog\LCSLogGUI.cs" />
     <Compile Include="Assets\Framework\LModule\LLog\LILog.cs" />
-    <Compile Include="Assets\Framework\LModule\LLog\LCSLog.cs" />
     <Compile Include="Assets\Framework\LModule\LMessage\LLocal\LCSLocalPrefs.cs" />
     <Compile Include="Assets\Framework\LModule\LProfiler\LCRecordTime.cs" />
     <Compile Include="Assets\Framework\LModule\LProfiler\LCRecordWatch.cs" />

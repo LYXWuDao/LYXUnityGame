@@ -14,11 +14,8 @@ namespace Game.LDebug
      * 
      */
 
-    public class LCSLogFile : LCSLog
+    public static class LCSLogFile
     {
-
-        private LCSLogFile() { }
-
         /// <summary>
         /// 文件日志列表
         /// </summary>
@@ -30,19 +27,14 @@ namespace Game.LDebug
         private static int CacheCount = 20;
 
         /// <summary>
-        /// 日志文件大小
-        /// </summary>
-        private static int FileLength = 1024 * 1024;
-
-        /// <summary>
         /// 将日志保存到日志文件中
         /// </summary>
         private static void SaveToFile()
         {
-            if (!IsDebugMode || _fileLogs == null) return;
-            string savePath = LCSPathHelper.UnityLogPath();
+            if (!LCSConfig.IsDebugMode || _fileLogs == null) return;
+            string savePath = LCSPathHelper.UnityLogFilePath();
             FileStream stream = File.Open(savePath, FileMode.OpenOrCreate);
-            if (stream.Length > FileLength)
+            if (stream.Length > LCSConfig.KbSize)
             {
                 stream.Close();
                 File.WriteAllText(savePath, "");
@@ -67,7 +59,7 @@ namespace Game.LDebug
         /// <param name="msg"></param>
         private static void WriteToFile(string msg)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             if (string.IsNullOrEmpty(msg)) return;
             if (_fileLogs.Count >= CacheCount) SaveToFile();
             _fileLogs.Add(msg);
@@ -77,9 +69,9 @@ namespace Game.LDebug
         /// 写日志 log 类型的
         /// </summary>
         /// <param name="msg">输出日志</param>
-        public static new void Write(object msg)
+        public static void Write(object msg)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             WriteToFile(string.Format("[File log]:{0}", msg));
         }
 
@@ -88,9 +80,9 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        public static new void Write(string msg, params object[] args)
+        public static void Write(string msg, params object[] args)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             WriteToFile(string.Format("[File log]:" + msg, args));
         }
 
@@ -98,9 +90,9 @@ namespace Game.LDebug
         /// 输出格式化数据
         /// </summary>
         /// <param name="args"></param>
-        public static new void Write(params object[] args)
+        public static void Write(params object[] args)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             for (int i = 0; i < args.Length; ++i)
             {
@@ -114,9 +106,9 @@ namespace Game.LDebug
         /// 输出错误日志
         /// </summary>
         /// <param name="msg"></param>
-        public static new void WriteError(object msg)
+        public static void WriteError(object msg)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             WriteToFile(string.Format("[File Error]:{0}", msg));
         }
 
@@ -125,9 +117,9 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        public static new void WriteError(string msg, params object[] args)
+        public static void WriteError(string msg, params object[] args)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             WriteToFile(string.Format("[File Error]:" + msg, args));
         }
 
@@ -135,9 +127,9 @@ namespace Game.LDebug
         /// 输出错误日志
         /// </summary>
         /// <param name="args"></param>
-        public static new void WriteError(params object[] args)
+        public static void WriteError(params object[] args)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             for (int i = 0; i < args.Length; ++i)
             {
@@ -151,9 +143,9 @@ namespace Game.LDebug
         /// 输出警告日志
         /// </summary>
         /// <param name="msg"></param>
-        public static new void WriteWarning(object msg)
+        public static void WriteWarning(object msg)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             WriteToFile(string.Format("[File Warning]:{0}", msg));
         }
 
@@ -162,9 +154,9 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        public static new void WriteWarning(string msg, params object[] args)
+        public static void WriteWarning(string msg, params object[] args)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             WriteToFile(string.Format("[File Warning]:" + msg, args));
         }
 
@@ -172,9 +164,9 @@ namespace Game.LDebug
         /// 输出警告日志
         /// </summary>
         /// <param name="args"></param>
-        public static new void WriteWarning(params object[] args)
+        public static void WriteWarning(params object[] args)
         {
-            if (!IsDebugMode) return;
+            if (!LCSConfig.IsDebugMode) return;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             for (int i = 0; i < args.Length; ++i)
             {
@@ -187,7 +179,7 @@ namespace Game.LDebug
         /// <summary>
         /// 清理数据
         /// </summary>
-        public static new void Clear()
+        public static void Clear()
         {
             SaveToFile();
             _fileLogs.Clear();

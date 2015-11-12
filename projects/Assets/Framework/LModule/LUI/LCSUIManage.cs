@@ -73,18 +73,18 @@ namespace Game.LUI
         {
             if (string.IsNullOrEmpty(pageName))
             {
-                LCSLogConsole.WriteError("打开的界面名字为空! pageName = " + pageName);
+                LCSConsole.WriteError("打开的界面名字为空! pageName = " + pageName);
                 return null;
             }
             if (string.IsNullOrEmpty(bundlePath))
             {
-                LCSLogConsole.WriteError("加载资源 AssetBundle 文件路径为空! bundlePath = " + bundlePath);
+                LCSConsole.WriteError("加载资源 AssetBundle 文件路径为空! bundlePath = " + bundlePath);
                 return null;
             }
             GameObject ui = LCSManageSource.LoadSource(pageName, bundlePath, typeof(GameObject));
             if (ui == null)
             {
-                LCSLogConsole.WriteError("加载的资源不存在!");
+                LCSConsole.WriteError("加载的资源不存在!");
                 return null;
             }
             GameObject go = GameObject.Instantiate(ui) as GameObject;

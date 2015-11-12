@@ -94,7 +94,7 @@ namespace Game.LCommon
         /// 日志文件保存路径
         /// </summary>
         /// <returns></returns>
-        public static string UnityLogPath()
+        public static string UnityLogFilePath()
         {
             return UnityAssets() + "log.txt";
         }

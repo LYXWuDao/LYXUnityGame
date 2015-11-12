@@ -60,13 +60,13 @@ namespace Game.LSource
         {
             if (string.IsNullOrEmpty(name))
             {
-                LCSLogConsole.WriteError("导入资源名字为空,name = " + name);
+                LCSConsole.WriteError("导入资源名字为空,name = " + name);
                 return null;
             }
             UnityEngine.Object load = Resources.Load(name, type);
             if (load == null)
             {
-                LCSLogConsole.WriteError("导入资源不存在！！");
+                LCSConsole.WriteError("导入资源不存在！！");
                 return null;
             }
             return load as GameObject;
@@ -192,19 +192,19 @@ namespace Game.LSource
         {
             if (string.IsNullOrEmpty(resName))
             {
-                LCSLogConsole.WriteError("导入资源名字为空,resName = " + resName);
+                LCSConsole.WriteError("导入资源名字为空,resName = " + resName);
                 return null;
             }
 
             if (string.IsNullOrEmpty(bundPath))
             {
-                LCSLogConsole.WriteError("导入 AssetBundle 路径为空, bundPath = " + bundPath);
+                LCSConsole.WriteError("导入 AssetBundle 路径为空, bundPath = " + bundPath);
                 return null;
             }
 
             if (!File.Exists(bundPath))
             {
-                LCSLogConsole.WriteError("导入 AssetBundle 路径不存在,bundPath = " + bundPath);
+                LCSConsole.WriteError("导入 AssetBundle 路径不存在,bundPath = " + bundPath);
                 return null;
             }
 
@@ -213,14 +213,14 @@ namespace Game.LSource
 
             if (bundle == null)
             {
-                LCSLogConsole.WriteError("创建资源 AssetBundle 失败!");
+                LCSConsole.WriteError("创建资源 AssetBundle 失败!");
                 return null;
             }
 
             UnityEngine.Object retobj = bundle.Load(resName, type);
             if (retobj == null)
             {
-                LCSLogConsole.WriteError("资源 AssetBundle 中不存在 resName = " + resName);
+                LCSConsole.WriteError("资源 AssetBundle 中不存在 resName = " + resName);
                 return null;
             }
 
@@ -244,19 +244,19 @@ namespace Game.LSource
         {
             if (bundle == null)
             {
-                LCSLogConsole.WriteError("资源 AssetBundle 不存在");
+                LCSConsole.WriteError("资源 AssetBundle 不存在");
                 return null;
             }
             if (string.IsNullOrEmpty(resName))
             {
-                LCSLogConsole.WriteError("导入资源名字为空,resName = " + resName);
+                LCSConsole.WriteError("导入资源名字为空,resName = " + resName);
                 return null;
             }
             if (type == null) type = typeof(GameObject);
             UnityEngine.Object retobj = bundle.Load(resName, type);
             if (retobj == null)
             {
-                LCSLogConsole.WriteError("资源 AssetBundle 中不存在 resName = " + resName);
+                LCSConsole.WriteError("资源 AssetBundle 中不存在 resName = " + resName);
                 return null;
             }
             return retobj as GameObject;

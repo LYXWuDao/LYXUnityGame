@@ -34,37 +34,60 @@ namespace Game.LProfiler
             RecordWatchEntity entity = CurrentWatch;
             if (entity != null && entity.IsWatch)
             {
-                LCSLogConsole.WriteError("已经开始观察性能......");
+                LCSConsole.WriteError("已经开始观察性能......");
                 return;
             }
-
-            if (entity != null)
-            {
-                entity.IsWatch = true;
-                entity.StartTime = Time.realtimeSinceStartup;
-                entity.BeginWatch();
-                return;
-            }
-
-            entity = new RecordWatchEntity();
-            entity.WatchKey = string.IsNullOrEmpty(key) ? Guid.NewGuid().ToString() : key;
-            // 记录 自游戏开始的实时时间
-            entity.StartTime = Time.realtimeSinceStartup;
+            if (entity == null)
+                entity = new RecordWatchEntity { WatchKey = string.IsNullOrEmpty(key) ? Guid.NewGuid().ToString() : key };
             entity.BeginWatch();
             AddWatch(entity);
-            CurrentWatch = entity;
         }
 
-        public void EndWatch()
+        /// <summary>
+        /// 结束观察
+        /// </summary>
+        public double EndWatch()
+        {
+            RecordWatchEntity entity = CurrentWatch;
+            if (entity == null)
+            {
+                LCSConsole.WriteError("观察还未开始...");
+                return 0;
+            }
+            entity.EndWatch();
+            double watchTime = entity.GetWatchTime();
+            // 7位精度
+            LCSConsole.WriteWarning("[Watch] {0} use time : {1}s.", entity.WatchKey, watchTime.ToString("F7"));
+            return watchTime;
+        }
+
+        /// <summary>
+        /// 得到当前的观察时间
+        /// </summary>
+        /// <returns></returns>
+        public double GetWatchTime()
+        {
+            RecordWatchEntity entity = CurrentWatch;
+            if (entity == null)
+            {
+                LCSConsole.WriteError("观察还未开始...");
+                return 0;
+            }
+            if (entity.IsWatch)
+            {
+                LCSConsole.WriteError("观察还未结束...");
+                return 0;
+            }
+            return entity.GetWatchTime();
+        }
+
+        /// <summary>
+        /// 清除观察
+        /// </summary>
+        public void ClearWatch()
         {
             RecordWatchEntity entity = CurrentWatch;
             if (entity == null) return;
-            entity.EndTime = Time.realtimeSinceStartup;
-            entity.EndWatch();
-            double watchTime = entity.GetWatchTime();
-            LCSLogConsole.Write(string.Format(" [RecordTime] {0} use {1}s.", entity.WatchKey, entity.DiffTime));
-            // 7位精度
-            LCSLogConsole.WriteWarning("[Watch] {0} use time : {1}s.", entity.WatchKey, watchTime.ToString("F7"));
             RemoveWatch(entity);
         }
 

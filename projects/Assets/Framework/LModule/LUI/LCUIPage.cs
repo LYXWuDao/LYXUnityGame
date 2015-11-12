@@ -43,7 +43,7 @@ namespace Game.UI
             mPanels = gameObject.GetComponentsInChildren<UIPanel>();
             mBoxColliders = gameObject.GetComponentsInChildren<Collider>();
             if (mPanels == null) return;
-            LCSLogConsole.WriteError(mPanels.Length);
+            LCSConsole.WriteError(mPanels.Length);
             for (int i = 0, len = mPanels.Length; i < len; i++)
             {
                 mPanels[i].depth = depth + i;
