@@ -196,14 +196,6 @@ namespace Game.LDebug
             }
         }
 
-        /// <summary>
-        /// 当被销毁时
-        /// </summary>
-        public override void OnDestroy()
-        {
-            OnClear();
-        }
-
     }
 
 }

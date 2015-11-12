@@ -80,10 +80,12 @@ namespace Game.LBehaviour
 
         public virtual void OnDestroy()
         {
+            OnClear();
         }
 
         public virtual void OnApplicationQuit()
         {
+            OnClear();
         }
     }
 

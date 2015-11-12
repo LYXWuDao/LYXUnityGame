@@ -1,1 +1,37 @@
 sdasdfs11
+[File log]:fefefef
+[File log]:UnityEngine.Debug:Log(Object)
+Game.LDebug.LCSConsole:WriteDebug(Object, LogType) (at Assets/Framework/LModule/LLog/LCSConsole.cs:27)
+Game.LDebug.LCSConsole:Write(String, Object[]) (at Assets/Framework/LModule/LLog/LCSConsole.cs:54)
+LCTestFramework:Awake() (at Assets/Framework/LCTestFramework.cs:26)
+
+[File Error]:fefefef11
+[File Error]:UnityEngine.Debug:Log(Object)
+Game.LDebug.LCSConsole:WriteDebug(Object, LogType) (at Assets/Framework/LModule/LLog/LCSConsole.cs:27)
+Game.LDebug.LCSConsole:Write(String, Object[]) (at Assets/Framework/LModule/LLog/LCSConsole.cs:54)
+LCTestFramework:Awake() (at Assets/Framework/LCTestFramework.cs:27)
+
+[File Error]:fefefef22
+[File Error]:UnityEngine.Debug:Log(Object)
+Game.LDebug.LCSConsole:WriteDebug(Object, LogType) (at Assets/Framework/LModule/LLog/LCSConsole.cs:27)
+Game.LDebug.LCSConsole:Write(String, Object[]) (at Assets/Framework/LModule/LLog/LCSConsole.cs:54)
+LCTestFramework:Awake() (at Assets/Framework/LCTestFramework.cs:28)
+
+[File Error]:fefefef11
+[File Error]:UnityEngine.Debug:Log(Object)
+Game.LDebug.LCSConsole:WriteDebug(Object, LogType) (at Assets/Framework/LModule/LLog/LCSConsole.cs:27)
+Game.LDebug.LCSConsole:Write(String, Object[]) (at Assets/Framework/LModule/LLog/LCSConsole.cs:54)
+LCTestFramework:Awake() (at Assets/Framework/LCTestFramework.cs:29)
+
+[File Error]:33333
+[File Error]:UnityEngine.Debug:Log(Object)
+Game.LDebug.LCSConsole:WriteDebug(Object, LogType) (at Assets/Framework/LModule/LLog/LCSConsole.cs:27)
+Game.LDebug.LCSConsole:Write(String, Object[]) (at Assets/Framework/LModule/LLog/LCSConsole.cs:54)
+LCTestFramework:Awake() (at Assets/Framework/LCTestFramework.cs:30)
+
+[File Error]:fefefef11
+[File Error]:UnityEngine.Debug:Log(Object)
+Game.LDebug.LCSConsole:WriteDebug(Object, LogType) (at Assets/Framework/LModule/LLog/LCSConsole.cs:27)
+Game.LDebug.LCSConsole:Write(String, Object[]) (at Assets/Framework/LModule/LLog/LCSConsole.cs:54)
+LCTestFramework:Awake() (at Assets/Framework/LCTestFramework.cs:30)
+

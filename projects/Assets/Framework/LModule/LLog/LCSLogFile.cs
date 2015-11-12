@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Game.LCommon;
+using UnityEngine;
 
 namespace Game.LDebug
 {
@@ -16,20 +17,28 @@ namespace Game.LDebug
 
     public static class LCSLogFile
     {
+
         /// <summary>
         /// 文件日志列表
         /// </summary>
         private static List<string> _fileLogs = new List<string>();
 
         /// <summary>
-        /// 默认缓存日志条数
+        /// 写入文件
         /// </summary>
-        private static int CacheCount = 20;
+        /// <param name="msg"></param>
+        private static void WriteToFile(string msg)
+        {
+            if (!LCSConfig.IsDebugMode) return;
+            if (string.IsNullOrEmpty(msg)) return;
+            if (_fileLogs.Count >= LCSConfig.LogFileCacheCount) SaveToFile();
+            _fileLogs.Add(msg);
+        }
 
         /// <summary>
         /// 将日志保存到日志文件中
         /// </summary>
-        private static void SaveToFile()
+        public static void SaveToFile()
         {
             if (!LCSConfig.IsDebugMode || _fileLogs == null) return;
             string savePath = LCSPathHelper.UnityLogFilePath();
@@ -51,18 +60,6 @@ namespace Game.LDebug
             write.Flush();
             write.Close();
             write = null;
-        }
-
-        /// <summary>
-        /// 写入文件
-        /// </summary>
-        /// <param name="msg"></param>
-        private static void WriteToFile(string msg)
-        {
-            if (!LCSConfig.IsDebugMode) return;
-            if (string.IsNullOrEmpty(msg)) return;
-            if (_fileLogs.Count >= CacheCount) SaveToFile();
-            _fileLogs.Add(msg);
         }
 
         /// <summary>

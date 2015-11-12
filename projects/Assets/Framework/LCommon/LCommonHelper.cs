@@ -30,6 +30,16 @@ namespace Game.LCommon
         public static bool IsDebugMode = true;
 
         /// <summary>
+        /// 是否自动将日志写入文件
+        /// </summary>
+        public static bool IsAutoWriteToFile = true;
+
+        /// <summary>
+        /// 是否自动将日志写在屏幕上
+        /// </summary>
+        public static bool IsAutoWriteToGui = false;
+
+        /// <summary>
         /// 是否分析内存
         /// </summary>
         public static bool IsProfiler = true;
@@ -38,6 +48,11 @@ namespace Game.LCommon
         /// 1M  大小
         /// </summary>
         public static float KbSize = 1024.0f * 1024.0f;
+
+        /// <summary>
+        /// 默认文件日志缓存条数
+        /// </summary>
+        public static int LogFileCacheCount = 20;
 
     }
 
@@ -48,7 +63,7 @@ namespace Game.LCommon
     /// <summary>
     /// debug 日志输出的类型
     /// </summary>
-    public enum LogType
+    public enum DebugType
     {
         Log = 0, // default
         Warning = 2,

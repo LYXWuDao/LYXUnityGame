@@ -1,4 +1,5 @@
 ﻿using Game.LCommon;
+using UnityEngine;
 
 namespace Game.LDebug
 {
@@ -18,18 +19,18 @@ namespace Game.LDebug
         /// </summary>
         /// <param name="msg">输入内容</param>
         /// <param name="logType">输出的类型</param>
-        private static void WriteDebug(object msg, LogType logType)
+        private static void WriteDebug(object msg, DebugType logType)
         {
             if (!LCSConfig.IsDebugMode) return;
             switch (logType)
             {
-                case LogType.Log:
+                case DebugType.Log:
                     UnityEngine.Debug.Log(msg);
                     break;
-                case LogType.Warning:
+                case DebugType.Warning:
                     UnityEngine.Debug.LogWarning(msg);
                     break;
-                case LogType.Error:
+                case DebugType.Error:
                     UnityEngine.Debug.LogError(msg);
                     break;
             }
@@ -41,7 +42,7 @@ namespace Game.LDebug
         /// <param name="msg">输出日志</param>
         public static void Write(object msg)
         {
-            WriteDebug(msg, LogType.Log);
+            WriteDebug(msg, DebugType.Log);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Game.LDebug
         /// <param name="args"></param>
         public static void Write(string msg, params object[] args)
         {
-            WriteDebug(string.Format(msg, args), LogType.Log);
+            WriteDebug(string.Format(msg, args), DebugType.Log);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace Game.LDebug
                 sb.Append(args[i]);
                 sb.Append(", ");
             }
-            WriteDebug(sb.ToString(), LogType.Log);
+            WriteDebug(sb.ToString(), DebugType.Log);
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Game.LDebug
         /// <param name="msg"></param>
         public static void WriteError(object msg)
         {
-            WriteDebug(msg, LogType.Error);
+            WriteDebug(msg, DebugType.Error);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Game.LDebug
         /// <param name="args"></param>
         public static void WriteError(string msg, params object[] args)
         {
-            WriteDebug(string.Format(msg, args), LogType.Error);
+            WriteDebug(string.Format(msg, args), DebugType.Error);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Game.LDebug
                 sb.Append(args[i]);
                 sb.Append(", ");
             }
-            WriteDebug(sb.ToString(), LogType.Error);
+            WriteDebug(sb.ToString(), DebugType.Error);
         }
 
         /// <summary>
@@ -111,7 +112,7 @@ namespace Game.LDebug
         /// <param name="msg"></param>
         public static void WriteWarning(object msg)
         {
-            WriteDebug(msg, LogType.Warning);
+            WriteDebug(msg, DebugType.Warning);
         }
 
         /// <summary>
@@ -121,7 +122,7 @@ namespace Game.LDebug
         /// <param name="args"></param>
         public static void WriteWarning(string msg, params object[] args)
         {
-            WriteDebug(string.Format(msg, args), LogType.Warning);
+            WriteDebug(string.Format(msg, args), DebugType.Warning);
         }
 
         /// <summary>
@@ -137,7 +138,7 @@ namespace Game.LDebug
                 sb.Append(args[i]);
                 sb.Append(", ");
             }
-            WriteDebug(sb.ToString(), LogType.Warning);
+            WriteDebug(sb.ToString(), DebugType.Warning);
         }
 
     }
