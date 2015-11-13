@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Game.LBehaviour;
+using LGame.LBehaviour;
 using UnityEngine;
 
 /****

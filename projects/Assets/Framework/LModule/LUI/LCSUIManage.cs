@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Game.LCommon;
-using Game.LDebug;
-using Game.LSource;
-using Game.UI;
+using LGame.LBase;
+using LGame.LCommon;
+using LGame.LDebug;
+using LGame.LSource;
 using UnityEngine;
 
-namespace Game.LUI
+namespace LGame.LUI
 {
     /****
      * 
@@ -15,18 +15,19 @@ namespace Game.LUI
      *   界面操作入口
      *  
      */
-    public static class LCSUIManage
+    public sealed class LCSUIManage
     {
+        /// <summary>
+        /// 私有话 
+        /// 
+        /// 不允许实例化
+        /// </summary>
+        private LCSUIManage() { }
 
         /// <summary>
-        ///  缓存所有的界面数据
+        /// 所有打开界面的名字
         /// </summary>
-        private static Dictionary<string, LCUIPage> _uiManage = new Dictionary<string, LCUIPage>();
-
-        /// <summary>
-        ///  界面名字列表
-        /// </summary>
-        private static List<string> _pageNameList = new List<string>();
+        private static List<string> _winNames = new List<string>();
 
         /// <summary>
         /// ui 界面的根节点
@@ -34,54 +35,23 @@ namespace Game.LUI
         private static Transform _uiRoot;
 
         /// <summary>
-        /// 界面的深度
-        /// </summary>
-        private static int PageDepth = 1;
-
-        /// <summary>
-        /// 界面深度的跨度
-        /// </summary>
-        private static int DepthSpan = 30;
-
-        /// <summary>
-        /// 增加界面名字
-        /// </summary>
-        /// <param name="pageName"></param>
-        private static void AddPageName(string pageName)
-        {
-            if (string.IsNullOrEmpty(pageName)) return;
-            if (_pageNameList.Contains(pageName)) return;
-            _pageNameList.Add(pageName);
-        }
-
-        /// <summary>
-        /// 移出界面名字
-        /// </summary>
-        private static void RemovePageName(string pageName)
-        {
-            if (string.IsNullOrEmpty(pageName)) return;
-            if (_pageNameList.Contains(pageName)) return;
-            _pageNameList.Remove(pageName);
-        }
-
-        /// <summary>
         ///  创建界面
         /// </summary>
-        /// <param name="bundlePath">加载资源路径</param>
-        /// <param name="pageName">打开界面的名字</param>
-        private static LCUIPage CreatePage(string pageName, string bundlePath)
+        /// <param name="winPath">加载资源路径</param>
+        /// <param name="winName">打开界面的名字</param>
+        private static LAUIBehaviour CreatePage(string winName, string winPath)
         {
-            if (string.IsNullOrEmpty(pageName))
+            if (string.IsNullOrEmpty(winName))
             {
-                LCSConsole.WriteError("打开的界面名字为空! pageName = " + pageName);
+                LCSConsole.WriteError("打开的界面名字为空! pageName = " + winName);
                 return null;
             }
-            if (string.IsNullOrEmpty(bundlePath))
+            if (string.IsNullOrEmpty(winPath))
             {
-                LCSConsole.WriteError("加载资源 AssetBundle 文件路径为空! bundlePath = " + bundlePath);
+                LCSConsole.WriteError("加载资源 AssetBundle 文件路径为空! bundlePath = " + winPath);
                 return null;
             }
-            GameObject ui = LCSManageSource.LoadSource(pageName, bundlePath, typeof(GameObject));
+            GameObject ui = LCSManageSource.LoadSource(winName, winPath, typeof(GameObject));
             if (ui == null)
             {
                 LCSConsole.WriteError("加载的资源不存在!");
@@ -90,7 +60,90 @@ namespace Game.LUI
             GameObject go = GameObject.Instantiate(ui) as GameObject;
             if (go == null) return null;
             LCSCompHelper.InitTransform(go, UIRoot);
-            return LCSCompHelper.FindComponet<LCUIPage>(go);
+            return LCSCompHelper.GetComponent<LAUIBehaviour>(go);
+        }
+
+        /// <summary>
+        ///  尝试创建创建界面
+        /// </summary>
+        /// <param name="winPath">加载资源路径</param>
+        /// <param name="winName">打开界面的名字</param>
+        /// <param name="win"></param>
+        private static bool TryCreatePage(string winName, string winPath, out LAUIBehaviour win)
+        {
+            win = CreatePage(winName, winPath);
+            return win != null;
+        }
+
+        /// <summary>
+        /// 增加打开的界面
+        /// </summary>
+        /// <param name="winName"></param>
+        /// <param name="win"></param>
+        private static void Add(string winName, LAUIBehaviour win)
+        {
+            LCSBaseManage.Add(typeof(LCSUIManage), winName, win);
+            _winNames.Add(winName);
+        }
+
+        /// <summary>
+        /// 找到当前界面数据
+        /// </summary>
+        /// <param name="winName">界面的名字</param>
+        /// <returns></returns>
+        private static LAUIBehaviour Find(string winName)
+        {
+            return (LAUIBehaviour)LCSBaseManage.Find(typeof(LCSUIManage), winName);
+        }
+
+        /// <summary>
+        /// 找到当前界面数据
+        /// </summary>
+        /// <param name="winName">界面的名字</param>
+        /// <param name="win">界面</param>
+        /// <returns>是否成功</returns>
+        private static bool TryFind(string winName, out LAUIBehaviour win)
+        {
+            return (win = Find(winName)) != null;
+        }
+
+        /// <summary>
+        /// 查找当前所有的界面
+        /// </summary>
+        /// <returns></returns>
+        private static LAUIBehaviour[] FindAll()
+        {
+            return LCSBaseManage.Find<LAUIBehaviour>(typeof(LCSUIManage));
+        }
+
+        /// <summary>
+        /// 移出该类型数据
+        /// </summary>
+        private static void Remove()
+        {
+            LCSBaseManage.Remove(typeof(LCSUIManage));
+            _winNames.Clear();
+        }
+
+        /// <summary>
+        /// 移出
+        /// </summary>
+        /// <param name="winName"></param>
+        private static void Remove(string winName)
+        {
+            LCSBaseManage.Remove(typeof(LCSUIManage), winName);
+            _winNames.Remove(winName);
+        }
+
+        /// <summary>
+        /// 得到 2d 主摄像机
+        /// </summary>
+        public static UICamera UIMainCamera
+        {
+            get
+            {
+                return GameObject.FindObjectOfType<UICamera>();
+            }
         }
 
         /// <summary>
@@ -106,79 +159,110 @@ namespace Game.LUI
         }
 
         /// <summary>
-        /// 得到 2d 主摄像机
+        /// 得到当前最高的 ui 界面
         /// </summary>
-        public static UICamera UIMainCamera
-        {
-            get
-            {
-                return GameObject.FindObjectOfType<UICamera>();
-            }
-        }
-
-        /// <summary>
-        /// 界面是否打开
-        /// </summary>
-        /// <param name="pageName">界面的名字</param>
         /// <returns></returns>
-        public static bool HasPage(string pageName)
+        public static LAUIBehaviour TopWindow()
         {
-            if (string.IsNullOrEmpty(pageName)) return false;
-            return _uiManage.ContainsKey(pageName);
+            if (_winNames.Count <= 0) return null;
+            string winName = _winNames[_winNames.Count - 1];
+            return Find(winName);
         }
 
         /// <summary>
-        /// 得到最顶层的页面
+        /// 尝试得到最高的界面
         /// </summary>
-        public static LCUIPage GetTopLevelPage()
+        /// <param name="topWin"></param>
+        /// <returns></returns>
+        public static bool TryTopWindow(out LAUIBehaviour topWin)
         {
-            if (_pageNameList == null) return null;
-            int len = _pageNameList.Count;
-            if (len <= 0) return null;
-            return GetPageInfo(_pageNameList[len - 1]);
+            return (topWin = TopWindow()) != null;
         }
 
         /// <summary>
-        /// 得到页面的信息
+        /// 同步打开界面
         /// </summary>
-        public static LCUIPage GetPageInfo(string pageName)
+        /// <param name="winName">界面的名字，唯一</param>
+        /// <param name="winPath">界面加载路径</param>
+        public static void OpenWindow(string winName, string winPath)
         {
-            if (string.IsNullOrEmpty(pageName)) return null;
-            return HasPage(pageName) ? _uiManage[pageName] : null;
+            LAUIBehaviour win = null;
+            if (TryFind(winName, out win)) return;
+
+            int depth = 1;
+            // 当前最高的界面失去焦点
+            LAUIBehaviour topWin = TopWindow();
+            if (topWin != null)
+            {
+                depth = topWin.WinDepth + LCSConfig.DepthSpan;
+                topWin.OnLostFocus();
+            }
+
+            if (!TryCreatePage(winName, winPath, out win))
+            {
+                LCSConsole.WriteWarning("创建 ui 界面 LAUIBehaviour 失败!");
+                return;
+            }
+
+            // 初始化当前界面
+            win.OnOpen(depth, winName);
+            Add(winName, win);
         }
 
         /// <summary>
-        /// 打开ui界面
-        /// <param name="pageName"> 界面的名字 </param>
+        /// 异步打开界面
         /// </summary>
-        public static LCUIPage OpenPage(string pageName, string bundlePath)
+        /// <param name="winName"></param>
+        /// <param name="winPath"></param>
+        public static void AsyncOpenWindow(string winName, string winPath)
         {
-            if (HasPage(pageName)) return GetPageInfo(pageName);
-            LCUIPage topPage = GetTopLevelPage();
-            if (topPage != null) topPage.OnLostFocus();
-            LCUIPage page = CreatePage(pageName, bundlePath);
-            page.OnOpen(PageDepth);
-            PageDepth += DepthSpan;
-            _uiManage.Add(pageName, page);
-            AddPageName(pageName);
-            return page;
+            LAUIBehaviour win = null;
+            if (TryFind(winName, out win)) return;
         }
 
         /// <summary>
-        /// 关闭 ui
+        /// 异步打开界面回调
         /// </summary>
-        /// <param name="pageName">界面名字</param>
-        public static bool ClosePage(string pageName)
+        public static void AsyncOpenWindowCallback()
         {
-            if (string.IsNullOrEmpty(pageName) || !HasPage(pageName)) return false;
-            LCUIPage page = GetPageInfo(pageName);
-            page.OnClose();
-            LCSManageSource.RemoveSource(pageName);
-            PageDepth -= DepthSpan;
-            LCUIPage topPage = GetTopLevelPage();
-            if (topPage != null) topPage.OnFocus();
-            RemovePageName(pageName);
-            return _uiManage.Remove(pageName);
+
+        }
+
+        /// <summary>
+        /// 关闭最上层的界面
+        /// </summary>
+        public static void CloseWindow()
+        {
+            LAUIBehaviour win = null;
+            if (!TryTopWindow(out win)) return;
+            win.Destroy();
+            Remove(win.WinName);
+        }
+
+        /// <summary>
+        /// 关闭界面
+        /// </summary>
+        public static void CloseWindow(string winName)
+        {
+            LAUIBehaviour win = null;
+            if (!TryFind(winName, out win)) return;
+            win.Destroy();
+            Remove(win.WinName);
+            LAUIBehaviour topWin = null;
+            if (!TryTopWindow(out topWin)) return;
+            topWin.OnFocus();
+        }
+
+        /// <summary>
+        /// 关闭所有的界面
+        /// </summary>
+        public static void CloseAllWindow()
+        {
+            LAUIBehaviour[] win = FindAll();
+            if (win == null) return;
+            for (int i = 0, len = win.Length; i < len; i++)
+                win[i].Destroy();
+            Remove();
         }
 
     }

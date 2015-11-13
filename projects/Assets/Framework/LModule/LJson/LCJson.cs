@@ -2,7 +2,7 @@
 using System;
 using LitJson;
 
-namespace Game.LJson
+namespace LGame.LJson
 {
 
     /***

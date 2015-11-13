@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-using Game.LCommon;
-using Game.LDebug;
+using LGame.LCommon;
+using LGame.LDebug;
 using UnityEngine;
 
 /****
@@ -13,7 +13,7 @@ using UnityEngine;
  * 
  */
 
-namespace Game.LSource
+namespace LGame.LSource
 {
 
     public static class LCSLoadSource

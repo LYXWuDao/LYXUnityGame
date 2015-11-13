@@ -1,5 +1,5 @@
 ﻿
-namespace Game.LDebug
+namespace LGame.LDebug
 {
 
     /***

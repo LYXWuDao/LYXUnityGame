@@ -1,9 +1,9 @@
 ﻿using System;
-using Game.LCommon;
-using Game.LDebug;
+using LGame.LCommon;
+using LGame.LDebug;
 using UnityEngine;
 
-namespace Game.LProfiler
+namespace LGame.LProfiler
 {
 
     /***
@@ -37,8 +37,7 @@ namespace Game.LProfiler
                 LCSConsole.WriteError("已经开始观察性能......");
                 return;
             }
-            if (entity == null)
-                entity = new RecordWatchEntity { WatchKey = string.IsNullOrEmpty(key) ? Guid.NewGuid().ToString() : key };
+            if (entity == null) entity = new RecordWatchEntity { WatchKey = string.IsNullOrEmpty(key) ? LCSGuid.NewUpperGuid() : key };
             entity.BeginWatch();
             AddWatch(entity);
         }

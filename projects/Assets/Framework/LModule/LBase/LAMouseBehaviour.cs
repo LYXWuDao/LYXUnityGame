@@ -8,7 +8,7 @@
  * 
  */
 
-namespace Game.LBehaviour
+namespace LGame.LBehaviour
 {
 
     public abstract class LAMouseBehaviour : LABehaviour

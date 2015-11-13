@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-
-namespace Game.LBehaviour
+namespace LGame.LBehaviour
 {
 
     /******

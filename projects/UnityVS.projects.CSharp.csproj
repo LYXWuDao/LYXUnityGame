@@ -70,13 +70,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Framework\LCommon\LCSGuid.cs" />
     <Compile Include="Assets\Framework\LCTestFramework.cs" />
     <Compile Include="Assets\Framework\LCommon\LCSCompHelper.cs" />
     <Compile Include="Assets\Framework\LCommon\LCSPathHelper.cs" />
     <Compile Include="Assets\Framework\LCommon\LCommonHelper.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LABehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LAMouseBehaviour.cs" />
-    <Compile Include="Assets\Framework\LModule\LBase\LAUIBehaviour.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LCSBaseManage.cs" />
+    <Compile Include="Assets\Framework\LModule\LUI\LAUIBehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LCBaseBehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LIBehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LJson\LCJson.cs" />
@@ -104,8 +106,9 @@
     <Compile Include="Assets\Framework\LModule\LSources\LCSLoadSource.cs" />
     <Compile Include="Assets\Framework\LModule\LSources\LCSManageSource.cs" />
     <Compile Include="Assets\Framework\LModule\LSources\LCSUnloadSource.cs" />
+    <Compile Include="Assets\Framework\LModule\LUI\LCLuaPage.cs" />
     <Compile Include="Assets\Framework\LModule\LUI\LCSUIManage.cs" />
-    <Compile Include="Assets\Framework\LModule\LUI\LCUIPage.cs" />
+    <Compile Include="Assets\Framework\LModule\LUI\LIUIBehaviour.cs" />
     <Compile Include="Assets\Framework\LUtils\LCAdaptiveScene.cs" />
     <Compile Include="Assets\Framework\LUtils\LCArcTweener.cs" />
     <Compile Include="Assets\Framework\LUtils\LCClickEffect.cs" />

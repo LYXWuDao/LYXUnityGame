@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-/***
- * 
- * 
- *  ui 界面响应事件行为组件
- * 
- * 
- */
-
-namespace Game.LBehaviour
+namespace LGame.LUI
 {
 
-    public abstract class LAUIBehaviour : LABehaviour
+    /****
+     * 
+     * 
+     * ui 界面接口类
+     * 
+     */
+
+    interface LIUIBehaviour
     {
 
         /// <summary>
@@ -20,62 +21,68 @@ namespace Game.LBehaviour
         /// 
         /// 打开并创建界面
         /// </summary>
-        public virtual void OnOpen() { }
+        void OnOpen();
 
         /// <summary>
         /// 打开界面
         /// </summary>
         /// <param name="depth">界面深度</param>
-        public virtual void OnOpen(int depth) { }
+        void OnOpen(int depth);
+
+        /// <summary>
+        /// 打开界面
+        /// </summary>
+        /// <param name="depth">界面深度</param>
+        /// <param name="winName">界面的名字</param>
+        void OnOpen(int depth, string winName);
 
         /// <summary>
         /// 关闭界面
         /// 
         /// 关闭并销毁该界面
         /// </summary>
-        public virtual void OnClose() { }
+        void OnClose();
 
         /// <summary>
         ///  界面获得焦点
         /// </summary>
-        public virtual void OnFocus() { }
+        void OnFocus();
 
         /// <summary>
         /// 界面失去焦点
         /// </summary>
-        public virtual void OnLostFocus() { }
+        void OnLostFocus();
 
         /// <summary>
         /// 单击事件
         /// </summary>
-        public virtual void OnClick() { }
+        void OnClick();
 
         /// <summary>
         /// 双击事件
         /// </summary>
-        public virtual void OnDoubleClick() { }
+        void OnDoubleClick();
 
         /// <summary>
         /// 按下一定时间
         /// </summary>
-        public virtual void OnPress() { }
+        void OnPress();
 
         /// <summary>
         /// 鼠标按下一定时间后抬起
         /// </summary>
-        public virtual void OnRelease() { }
+        void OnRelease();
 
         /// <summary>
         /// 显示
         /// </summary>
-        public virtual void OnShow() { }
+        void OnShow();
 
         /// <summary>
         /// 隐藏
         /// </summary>
-        public virtual void OnHide() { }
+        void OnHide();
 
     }
 
 }
-

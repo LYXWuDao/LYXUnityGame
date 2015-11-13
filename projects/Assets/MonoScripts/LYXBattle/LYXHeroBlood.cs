@@ -1,5 +1,5 @@
-﻿using Game.LBehaviour;
-using Game.LCommon;
+﻿using LGame.LBehaviour;
+using LGame.LCommon;
 using Game.LUtils;
 using UnityEngine;
 using System.Collections;

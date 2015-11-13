@@ -9,7 +9,7 @@ using UnityEngine;
  * 
  */
 
-namespace Game.LCommon
+namespace LGame.LCommon
 {
 
     public static class LCSPathHelper

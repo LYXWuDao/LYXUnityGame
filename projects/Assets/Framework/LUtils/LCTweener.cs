@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.LBehaviour;
+using LGame.LBehaviour;
 using UnityEngine;
 
 namespace Game.LUtils

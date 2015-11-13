@@ -1,10 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using Game.LJson;
+using LGame.LJson;
 using UnityEngine;
 
-namespace Game.LMessage
+namespace LGame.LMessage
 {
 
     /***

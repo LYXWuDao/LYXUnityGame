@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.LCommon;
-using Game.LDebug;
+using LGame.LCommon;
+using LGame.LDebug;
 using UnityEngine;
 
 /***
@@ -12,7 +12,7 @@ using UnityEngine;
  * 
  */
 
-namespace Game.LSource
+namespace LGame.LSource
 {
 
     public static class LCSManageSource
@@ -33,14 +33,11 @@ namespace Game.LSource
         public static GameObject LoadSource(string resName, string bundPath, Type type)
         {
             LoadSourceEntity entity = null;
-            if (CacheSource.ContainsKey(resName)) entity = CacheSource[resName];
-            else entity = LoadEnitySource(resName, bundPath, type);
+            if (CacheSource.TryGetValue(resName, out entity)) return entity.LoadObj;
+            entity = LoadEnitySource(resName, bundPath, type);
             if (entity == null) return null;
-            if (!CacheSource.ContainsKey(resName))
-            {
-                entity.SourceId = Guid.NewGuid().ToString();
-                CacheSource.Add(resName, entity);
-            }
+            entity.SourceId = LCSGuid.NewUpperGuid();
+            CacheSource.Add(resName, entity);
             return entity.LoadObj;
         }
 

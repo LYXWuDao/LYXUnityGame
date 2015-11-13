@@ -10,7 +10,7 @@ using UnityEngine;
  * 
  */
 
-namespace Game.LCommon
+namespace LGame.LCommon
 {
 
     public static class LCSCompHelper
@@ -145,6 +145,8 @@ namespace Game.LCommon
 
         /// <summary>
         /// 查找组件
+        /// 
+        /// 单个
         /// </summary>
         /// <typeparam name="T">组件的类型</typeparam>
         /// <param name="source">查找组件的对象</param>
@@ -157,6 +159,19 @@ namespace Game.LCommon
             Transform child = FindTransform(source, childPath);
             if (child == null) return default(T);
             return child.GetComponent<T>();
+        }
+
+        /// <summary>
+        /// 查找组件
+        /// 
+        /// 多个，包括子节点上的
+        /// </summary>
+        /// <typeparam name="T">组件的类型</typeparam>
+        /// <param name="source">查找组件的对象</param>
+        /// <returns></returns>
+        public static T[] GetComponents<T>(GameObject source) where T : Component
+        {
+            return source == null ? null : source.GetComponentsInChildren<T>();
         }
 
         /// <summary>
@@ -202,6 +217,7 @@ namespace Game.LCommon
         /// </summary>
         /// <typeparam name="T">组件的类型</typeparam>
         /// <param name="source">查找/增加 组件的 gameobject</param>
+        /// <param name="childPath">子节点路径</param>
         /// <returns></returns>
         public static T FindComponet<T>(GameObject source, string childPath) where T : Component
         {
@@ -309,6 +325,17 @@ namespace Game.LCommon
                 }
             }
             return maxDuration;
+        }
+
+        /// <summary>
+        /// 设置 box Colliders 是否可用
+        /// </summary>
+        /// <param name="source">设置对象</param>
+        /// <param name="enable">是否能够使用</param>
+        public static void CollidersEnabled(Collider[] source, bool enable = true)
+        {
+            if (source == null) return;
+            for (int i = 0, len = source.Length; i < len; i++) source[i].enabled = enable;
         }
 
     }

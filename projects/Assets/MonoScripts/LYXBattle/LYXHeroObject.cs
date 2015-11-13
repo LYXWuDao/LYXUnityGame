@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Game.LBehaviour;
+using LGame.LBehaviour;
 using Game.LUtils;
 using UnityEngine;
 using System.Collections;

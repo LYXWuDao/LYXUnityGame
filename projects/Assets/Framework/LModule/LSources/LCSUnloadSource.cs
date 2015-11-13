@@ -1,4 +1,4 @@
-﻿using Game.LDebug;
+﻿using LGame.LDebug;
 using UnityEngine;
 
 
@@ -9,7 +9,7 @@ using UnityEngine;
  * 
  */
 
-namespace Game.LSource
+namespace LGame.LSource
 {
 
     public class LCSUnloadSource

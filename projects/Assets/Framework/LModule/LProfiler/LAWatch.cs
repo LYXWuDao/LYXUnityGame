@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.LCommon;
+using LGame.LCommon;
 
-namespace Game.LProfiler
+namespace LGame.LProfiler
 {
 
 

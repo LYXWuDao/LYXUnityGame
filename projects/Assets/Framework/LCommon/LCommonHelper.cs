@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ using UnityEngine;
 * 
 */
 
-namespace Game.LCommon
+namespace LGame.LCommon
 {
 
     #region  框架内 公用配置
@@ -53,6 +54,11 @@ namespace Game.LCommon
         /// 默认文件日志缓存条数
         /// </summary>
         public static int LogFileCacheCount = 20;
+
+        /// <summary>
+        /// 界面深度的跨度
+        /// </summary>
+        public static int DepthSpan = 30;
 
     }
 
@@ -208,6 +214,24 @@ namespace Game.LCommon
         /// 默认白色
         /// </summary>
         public Color LogColor = Color.white;
+
+    }
+
+
+    /// <summary>
+    /// 管理实体类
+    /// </summary>
+    public class LCManageEntity
+    {
+        /// <summary>
+        /// 唯一id
+        /// </summary>
+        public string Guid = string.Empty;
+
+        /// <summary>
+        /// 保存数据
+        /// </summary>
+        public Dictionary<string, object> DicEntitys = new Dictionary<string, object>();
 
     }
 
