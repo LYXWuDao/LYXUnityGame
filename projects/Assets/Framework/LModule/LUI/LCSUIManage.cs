@@ -15,7 +15,7 @@ namespace LGame.LUI
      *   界面操作入口
      *  
      */
-    public sealed class LCSUIManage
+    public sealed class LCSUIManage : LATManager<LAUIBehaviour>
     {
         /// <summary>
         /// 私有话 
@@ -23,11 +23,6 @@ namespace LGame.LUI
         /// 不允许实例化
         /// </summary>
         private LCSUIManage() { }
-
-        /// <summary>
-        /// 所有打开界面的名字
-        /// </summary>
-        private static List<string> _winNames = new List<string>();
 
         /// <summary>
         /// ui 界面的根节点
@@ -76,66 +71,6 @@ namespace LGame.LUI
         }
 
         /// <summary>
-        /// 增加打开的界面
-        /// </summary>
-        /// <param name="winName"></param>
-        /// <param name="win"></param>
-        private static void Add(string winName, LAUIBehaviour win)
-        {
-            LCSBaseManage.Add(typeof(LCSUIManage), winName, win);
-            _winNames.Add(winName);
-        }
-
-        /// <summary>
-        /// 找到当前界面数据
-        /// </summary>
-        /// <param name="winName">界面的名字</param>
-        /// <returns></returns>
-        private static LAUIBehaviour Find(string winName)
-        {
-            return (LAUIBehaviour)LCSBaseManage.Find(typeof(LCSUIManage), winName);
-        }
-
-        /// <summary>
-        /// 找到当前界面数据
-        /// </summary>
-        /// <param name="winName">界面的名字</param>
-        /// <param name="win">界面</param>
-        /// <returns>是否成功</returns>
-        private static bool TryFind(string winName, out LAUIBehaviour win)
-        {
-            return (win = Find(winName)) != null;
-        }
-
-        /// <summary>
-        /// 查找当前所有的界面
-        /// </summary>
-        /// <returns></returns>
-        private static LAUIBehaviour[] FindAll()
-        {
-            return LCSBaseManage.Find<LAUIBehaviour>(typeof(LCSUIManage));
-        }
-
-        /// <summary>
-        /// 移出该类型数据
-        /// </summary>
-        private static void Remove()
-        {
-            LCSBaseManage.Remove(typeof(LCSUIManage));
-            _winNames.Clear();
-        }
-
-        /// <summary>
-        /// 移出
-        /// </summary>
-        /// <param name="winName"></param>
-        private static void Remove(string winName)
-        {
-            LCSBaseManage.Remove(typeof(LCSUIManage), winName);
-            _winNames.Remove(winName);
-        }
-
-        /// <summary>
         /// 得到 2d 主摄像机
         /// </summary>
         public static UICamera UIMainCamera
@@ -164,9 +99,10 @@ namespace LGame.LUI
         /// <returns></returns>
         public static LAUIBehaviour TopWindow()
         {
-            if (_winNames.Count <= 0) return null;
-            string winName = _winNames[_winNames.Count - 1];
-            return Find(winName);
+            List<string> winNames = FindKeys<LCSUIManage>();
+            if (winNames.Count <= 0) return null;
+            string winName = winNames[winNames.Count - 1];
+            return Find<LCSUIManage>(winName);
         }
 
         /// <summary>
@@ -187,7 +123,7 @@ namespace LGame.LUI
         public static void OpenWindow(string winName, string winPath)
         {
             LAUIBehaviour win = null;
-            if (TryFind(winName, out win)) return;
+            if (TryFind<LCSUIManage>(winName, out win)) return;
 
             int depth = 1;
             // 当前最高的界面失去焦点
@@ -206,7 +142,7 @@ namespace LGame.LUI
 
             // 初始化当前界面
             win.OnOpen(depth, winName);
-            Add(winName, win);
+            Add<LCSUIManage>(winName, win);
         }
 
         /// <summary>
@@ -217,7 +153,7 @@ namespace LGame.LUI
         public static void AsyncOpenWindow(string winName, string winPath)
         {
             LAUIBehaviour win = null;
-            if (TryFind(winName, out win)) return;
+            if (TryFind<LCSUIManage>(winName, out win)) return;
         }
 
         /// <summary>
@@ -236,7 +172,7 @@ namespace LGame.LUI
             LAUIBehaviour win = null;
             if (!TryTopWindow(out win)) return;
             win.Destroy();
-            Remove(win.WinName);
+            Remove<LCSUIManage>(win.WinName);
         }
 
         /// <summary>
@@ -245,9 +181,19 @@ namespace LGame.LUI
         public static void CloseWindow(string winName)
         {
             LAUIBehaviour win = null;
-            if (!TryFind(winName, out win)) return;
+            if (!TryFind<LCSUIManage>(winName, out win)) return;
+            CloseWindow(win);
+        }
+
+        /// <summary>
+        /// 关闭界面
+        /// </summary>
+        /// <param name="win"></param>
+        public static void CloseWindow(LAUIBehaviour win)
+        {
+            if (win == null) return;
             win.Destroy();
-            Remove(win.WinName);
+            Remove<LCSUIManage>(win.WinName);
             LAUIBehaviour topWin = null;
             if (!TryTopWindow(out topWin)) return;
             topWin.OnFocus();
@@ -258,11 +204,11 @@ namespace LGame.LUI
         /// </summary>
         public static void CloseAllWindow()
         {
-            LAUIBehaviour[] win = FindAll();
+            List<LAUIBehaviour> win = FindValues<LCSUIManage>();
             if (win == null) return;
-            for (int i = 0, len = win.Length; i < len; i++)
+            for (int i = 0, len = win.Count; i < len; i++)
                 win[i].Destroy();
-            Remove();
+            Remove<LCSUIManage>();
         }
 
     }

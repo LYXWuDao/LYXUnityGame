@@ -46,6 +46,9 @@ namespace LGame.LUI
         [NonSerialized]
         private int mWinDepth = 0;
 
+        /// <summary>
+        /// 窗口深度
+        /// </summary>
         public int WinDepth
         {
             get
@@ -54,6 +57,9 @@ namespace LGame.LUI
             }
         }
 
+        /// <summary>
+        /// 窗口的名字
+        /// </summary>
         public string WinName
         {
             get
@@ -75,6 +81,10 @@ namespace LGame.LUI
         /// </summary>
         public virtual void OnOpen() { }
 
+        /// <summary>
+        /// 打开一个具有深度的窗口
+        /// </summary>
+        /// <param name="depth"></param>
         public virtual void OnOpen(int depth)
         {
             mWinDepth = depth;
@@ -91,9 +101,7 @@ namespace LGame.LUI
             mWinName = winName;
             if (mPanels == null) return;
             for (int i = 0, len = mPanels.Length; i < len; i++)
-            {
                 mPanels[i].depth = depth + i;
-            }
         }
 
         /// <summary>
@@ -109,10 +117,12 @@ namespace LGame.LUI
         /// 关闭界面
         /// 
         /// 关闭并销毁该界面
+        /// 
+        /// 如果该类被重写，需要调用base该方法
         /// </summary>
         public virtual void OnClose()
         {
-            LCSUIManage.CloseWindow(mWinName);
+            LCSUIManage.CloseWindow(this);
         }
 
         /// <summary>

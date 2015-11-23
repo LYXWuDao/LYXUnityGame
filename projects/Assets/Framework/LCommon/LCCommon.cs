@@ -110,9 +110,27 @@ namespace LGame.LCommon
         public string BundlePath = string.Empty;
 
         /// <summary>
+        /// 加载资源的类型
+        /// </summary>
+        public Type BundleType = null;
+
+        /// <summary>
         /// 加载的资源
         /// </summary>
         public GameObject LoadObj = null;
+
+        /// <summary>
+        /// 回调函数
+        /// 
+        /// 异步加载资源回调
+        /// GameObject   加载获得的资源
+        /// </summary>
+        public Action<GameObject> Callback = null;
+
+        public LoadSourceEntity()
+        {
+            SourceId = LCSGuid.NewUpperGuid();
+        }
 
     }
 
@@ -217,11 +235,14 @@ namespace LGame.LCommon
 
     }
 
-
     /// <summary>
-    /// 管理实体类
+    /// 
+    /// 所有管理者的泛型实体基类
+    /// 
+    /// 可以重写
+    /// 
     /// </summary>
-    public class LCManageEntity
+    public abstract class LATManagerEntity<TKey, TValue>
     {
         /// <summary>
         /// 唯一id
@@ -231,7 +252,153 @@ namespace LGame.LCommon
         /// <summary>
         /// 保存数据
         /// </summary>
-        public Dictionary<string, object> DicEntitys = new Dictionary<string, object>();
+        public Dictionary<TKey, TValue> DicEntitys = new Dictionary<TKey, TValue>();
+
+        /// <summary>
+        /// 数据所有值集合
+        /// </summary>
+        public List<TValue> Values = new List<TValue>();
+
+        /// <summary>
+        /// 数据所有key 值集合
+        /// </summary>
+        public List<TKey> Keys = new List<TKey>();
+
+        /// <summary>
+        /// 长度
+        /// </summary>
+        public int Length
+        {
+            get
+            {
+                return Keys.Count;
+            }
+        }
+
+        protected LATManagerEntity()
+        {
+            Guid = LCSGuid.NewUpperGuid();
+        }
+
+        /// <summary>
+        /// 增加管理数据
+        /// </summary>
+        /// <param name="key">key 值</param>
+        /// <param name="value">值</param>
+        public virtual void Add(TKey key, TValue value)
+        {
+            TValue old;
+            if (DicEntitys.TryGetValue(key, out old)) return;
+            DicEntitys.Add(key, value);
+            Values.Add(value);
+            Keys.Add(key);
+        }
+
+        /// <summary>
+        /// 修改管理数据
+        /// 
+        /// key 值不允许修改
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value">新的值</param>
+        public virtual void Modify(TKey key, TValue value)
+        {
+            TValue old;
+            if (!DicEntitys.TryGetValue(key, out old)) return;
+            DicEntitys[key] = value;
+            var index = Values.IndexOf(old);
+            Values[index] = value;
+        }
+
+        /// <summary>
+        /// 查找管理数据
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public virtual TValue Find(TKey key)
+        {
+            TValue old;
+            DicEntitys.TryGetValue(key, out old);
+            return old;
+        }
+
+        /// <summary>
+        /// 查实查找管理数据
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public virtual bool TryFind(TKey key, out TValue value)
+        {
+            return null != (value = Find(key));
+        }
+
+        /// <summary>
+        /// 查找第几个值
+        /// </summary>
+        /// <param name="index">值下标，从零开始</param>
+        /// <returns>找到的值</returns>
+        public virtual TValue FindValue(int index)
+        {
+            if (index < 0 || index >= Length) return default(TValue);
+            return Values[index];
+        }
+
+        /// <summary>
+        /// 该值的下标
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns> -1表示没找到 </returns>
+        public virtual int ValueIndexOf(TValue value)
+        {
+            return Values.IndexOf(value);
+        }
+
+        /// <summary>
+        /// 查找第几个key
+        /// </summary>
+        /// <param name="index">值下标，从零开始</param>
+        /// <returns>找到的key值</returns>
+        public virtual TKey FindKey(int index)
+        {
+            if (index < 0 || index >= Length) return default(TKey);
+            return Keys[index];
+        }
+
+        /// <summary>
+        /// 该key值的下标
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>-1表示没找到</returns>
+        public virtual int KeyIndexOf(TKey key)
+        {
+            return Keys.IndexOf(key);
+        }
+
+        /// <summary>
+        /// 移出数据
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public virtual TValue Remove(TKey key)
+        {
+            TValue result;
+            if (!TryFind(key, out result)) return default(TValue);
+            DicEntitys.Remove(key);
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// 管理者泛型类
+    /// 
+    /// key值为字符串
+    /// 
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
+    public class LCTManagerEntity<TValue> : LATManagerEntity<string, TValue>
+    {
 
     }
 

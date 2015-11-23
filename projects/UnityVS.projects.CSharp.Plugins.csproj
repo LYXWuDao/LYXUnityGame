@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Framework\LModule\LShader\RimLight.shader" />
+    <None Include="Assets\Framework\LModule\LShader\newShader.shader" />
     <None Include="Assets\Framework\read.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />

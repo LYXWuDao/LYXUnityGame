@@ -54,8 +54,7 @@ namespace LGame.LProfiler
             if (!LCSConfig.IsProfiler) return;
 
             GUI.Label(new Rect(0, 0, 200, 25), string.Format("MonoUsedSize:{0}", Profiler.GetMonoUsedSize() / LCSConfig.KbSize));
-            GUI.Label(new Rect(0, 15, 200, 25),
-                string.Format("Allocated:{0}", Profiler.GetTotalAllocatedMemory() / LCSConfig.KbSize));
+            GUI.Label(new Rect(0, 15, 200, 25), string.Format("Allocated:{0}", Profiler.GetTotalAllocatedMemory() / LCSConfig.KbSize));
             GUI.Label(new Rect(0, 30, 200, 25), string.Format("Reserved:{0}", Profiler.GetTotalReservedMemory() / LCSConfig.KbSize));
         }
 

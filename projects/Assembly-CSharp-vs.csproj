@@ -5,80 +5,58 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2F2E66B1-5FCD-7CAD-12C8-2A1E34F47373}</ProjectGuid>
+    <ProjectGuid>{2357E6ED-883A-B383-13B5-156C33BED528}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>Android:13</UnityBuildTarget>
-    <UnityVersion>4.6.7f1</UnityVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>
     </RootNamespace>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
-    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_4_6_7;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_4_6_7;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
-    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_4_6_7;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Core" />
-    <Reference Include="Boo.Lang" />
-    <Reference Include="UnityScript.Lang" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-UnityScript-firstpass">
-      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+    <Reference Include="UnityEditor">
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityVS.projects.CSharp.Plugins.csproj">
-      <Project>{9F380E4F-9BD2-7DD8-0E6B-842E182B6E80}</Project>
-      <Name>UnityVS.projects.CSharp.Plugins</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Assets\Framework\LCommon\LCCoroutine.cs" />
     <Compile Include="Assets\Framework\LCTestFramework.cs" />
     <Compile Include="Assets\Framework\LCommon\LCSCompHelper.cs" />
     <Compile Include="Assets\Framework\LCommon\LCSGuid.cs" />
     <Compile Include="Assets\Framework\LCommon\LCSPathHelper.cs" />
-    <Compile Include="Assets\Framework\LCommon\LCommonHelper.cs" />
+    <Compile Include="Assets\Framework\LCommon\LCCommon.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LABehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LAMouseBehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LCBaseBehaviour.cs" />
-    <Compile Include="Assets\Framework\LModule\LBase\LCSBaseManage.cs" />
+    <Compile Include="Assets\Framework\LModule\LBase\LATManager.cs" />
     <Compile Include="Assets\Framework\LModule\LBase\LIBehaviour.cs" />
     <Compile Include="Assets\Framework\LModule\LJson\LCJson.cs" />
     <Compile Include="Assets\Framework\LModule\LJson\LitJson\IJsonWrapper.cs" />
@@ -102,6 +80,7 @@
     <Compile Include="Assets\Framework\LModule\LProfiler\LCRecordTime.cs" />
     <Compile Include="Assets\Framework\LModule\LProfiler\LCRecordWatch.cs" />
     <Compile Include="Assets\Framework\LModule\LProfiler\LIWatch.cs" />
+    <Compile Include="Assets\Framework\LModule\LSources\LCAsyncLoadSource.cs" />
     <Compile Include="Assets\Framework\LModule\LSources\LCSLoadSource.cs" />
     <Compile Include="Assets\Framework\LModule\LSources\LCSManageSource.cs" />
     <Compile Include="Assets\Framework\LModule\LSources\LCSUnloadSource.cs" />
@@ -272,57 +251,74 @@
     <Compile Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\Destroy.cs" />
     <Compile Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\ParticleScaler.cs" />
     <Compile Include="Assets\Terrain\LYXUILookAt3D.cs" />
+    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
+    <None Include="Assets\NGUI\ReadMe - 3.9.0.txt" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+    <None Include="Assets\log.txt" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 2.shader" />
+    <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+    <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+    <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\HowtoPlay.txt" />
+    <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Prefabs\Fx\V2\V2_Change.txt" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
+    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+    <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 3.shader" />
+    <None Include="Assets\Framework\LModule\LShader\RimLight.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+    <None Include="Assets\Framework\read.txt" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+    <None Include="Assets\Framework\LModule\LShader\newShader.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked.shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+    <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
+    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
+    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
+    <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+    <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+    <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+    <Reference Include="Assembly-UnityScript-firstpass">
+      <HintPath>E:/selfworkspace/LYXUnityGame/projects/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.7/Standalone/UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Framework\LModule\LShader\newShader.shader" />
-    <None Include="Assets\Framework\LModule\LShader\RimLight.shader" />
-    <None Include="Assets\Framework\read.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
-    <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
-    <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
-    <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
-    <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
-    <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
-    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
-    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
-    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
-    <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
-    <None Include="Assets\NGUI\ReadMe - 3.9.0.txt" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 2.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 3.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
-    <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
-    <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Prefabs\Fx\V2\V2_Change.txt" />
-    <None Include="Assets\Sources\Effects\rfxeffect\RFX_Resources\Scripts\HowtoPlay.txt" />
-    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
-    <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
-    <None Include="Assets\log.txt" />
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{CDA601B0-D8C4-7476-76BB-4B795E211201}</Project>
+      <Name>Assembly-CSharp-firstpass-vs</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>
