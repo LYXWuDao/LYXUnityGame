@@ -68,6 +68,7 @@ namespace LGame.LSource
         /// <returns></returns>
         private IEnumerator Load(AssetBundleCreateRequest bundleRequest, LoadSourceEntity entity, Action<LoadSourceEntity> callback)
         {
+            if (entity == null) yield return 0;
             if (bundleRequest == null)
             {
                 LCSConsole.WriteError("异步加载 AssetBundleCreateRequest 不存在!, bundleRequest = null");
@@ -87,7 +88,6 @@ namespace LGame.LSource
                 yield return 0;
             }
             if (callback == null) yield return 0;
-            if (entity == null) entity = new LoadSourceEntity();
             entity.LoadObj = retobj as GameObject;
             entity.Bundle = assetBundle;
             callback(entity);

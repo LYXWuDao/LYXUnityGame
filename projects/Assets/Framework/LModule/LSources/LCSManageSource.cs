@@ -61,36 +61,25 @@ namespace LGame.LSource
             }
             if (entity.Callback == null) return;
             entity.Callback(entity.LoadObj);
+            Add<LCSManageSource>(entity.ResName, entity);
         }
 
         /// <summary>
-        /// 移出单个资源
-        /// </summary>
-        /// <param name="resName">资源名字</param>
-        /// <returns></returns>
-        private static LoadSourceEntity RemoveSource(string resName)
-        {
-            if (string.IsNullOrEmpty(resName))
-            {
-                LCSConsole.WriteError("移出的资源名字为空！,resName = " + resName);
-                return null;
-            }
-            LoadSourceEntity entity;
-            if (!TryFind<LCSManageSource>(resName, out entity))
-            {
-                LCSConsole.WriteError("移出的资源不存在！,resName = " + resName);
-                return null;
-            }
-            LCSUnloadSource.UnLoadSource(entity.Bundle);
-            Remove<LCSManageSource>(resName);
-            return entity;
-        }
-
-        /// <summary>
-        /// 加载资源
+        /// 同步加载资源
         /// </summary>
         /// <param name="resName">资源名字，不带后缀, 资源名字唯一</param>
-        /// <param name="bundPath">前置路径</param>
+        /// <param name="bundPath">资源完成路径(打包后的路径)</param>
+        /// <returns></returns>
+        public static GameObject LoadSource(string resName, string bundPath)
+        {
+            return LoadSource(resName, bundPath, null);
+        }
+
+        /// <summary>
+        /// 同步加载资源
+        /// </summary>
+        /// <param name="resName">资源名字，不带后缀, 资源名字唯一</param>
+        /// <param name="bundPath">资源完成路径(打包后的路径)</param>
         /// <param name="type">资源类型</param>
         /// <returns></returns>
         public static GameObject LoadSource(string resName, string bundPath, Type type)
@@ -104,12 +93,23 @@ namespace LGame.LSource
         }
 
         /// <summary>
+        /// 异步加载资源
+        /// </summary>
+        /// <param name="resName">资源名字，不带后缀, 资源名字唯一</param>
+        /// <param name="bundPath">资源完成路径(打包后的路径)</param>
+        /// <param name="callback"></param>
+        public static void AsyncLoadSource(string resName, string bundPath, Action<GameObject> callback)
+        {
+            AsyncLoadSource(resName, bundPath, null, callback);
+        }
+
+        /// <summary>
         /// 异步导入数据
         /// </summary>
-        /// <param name="resName"></param>
-        /// <param name="bundPath"></param>
-        /// <param name="type"></param>
-        /// <param name="callback"></param>
+        /// <param name="resName">资源名字，不带后缀, 资源名字唯一</param>
+        /// <param name="bundPath">资源完成路径(打包后的路径)</param>
+        /// <param name="type">资源加载类型</param>
+        /// <param name="callback">加载完成回调</param>
         /// <returns></returns>
         public static void AsyncLoadSource(string resName, string bundPath, Type type, Action<GameObject> callback)
         {
@@ -121,6 +121,29 @@ namespace LGame.LSource
                 Callback = callback,
             };
             LCAsyncLoadSource.Instance.LoadSource(entity, AsyncLoadCallback);
+        }
+
+        /// <summary>
+        /// 移出单个资源
+        /// </summary>
+        /// <param name="resName">资源名字</param>
+        /// <returns></returns>
+        public static bool RemoveSource(string resName)
+        {
+            if (string.IsNullOrEmpty(resName))
+            {
+                LCSConsole.WriteError("移出的资源名字为空！,resName = " + resName);
+                return false;
+            }
+            LoadSourceEntity entity;
+            if (!TryFind<LCSManageSource>(resName, out entity))
+            {
+                LCSConsole.WriteError("移出的资源不存在！,resName = " + resName);
+                return false;
+            }
+            LCSUnloadSource.UnLoadSource(entity.Bundle);
+            Remove<LCSManageSource>(resName);
+            return true;
         }
 
         /// <summary>

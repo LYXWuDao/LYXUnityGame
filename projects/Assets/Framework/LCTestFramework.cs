@@ -18,7 +18,7 @@ public class LCTestFramework : LABehaviour
     public override void Awake()
     {
 
-        LCSManageSource.AsyncLoadSource("uiBattlePanel", LCSPathHelper.UnityBuildRootPath() + "UI/uiBattlePanel.data", null, delegate(GameObject go)
+        LCSManageSource.AsyncLoadSource("uiBattlePanel", LCSPathHelper.UnityBuildRootPath() + "UI/uiBattlePanel.data", delegate(GameObject go)
         {
             GameObject.Instantiate(go);
         });
