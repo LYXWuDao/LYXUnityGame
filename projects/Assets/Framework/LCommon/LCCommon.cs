@@ -125,7 +125,7 @@ namespace LGame.LCommon
         /// 异步加载资源回调
         /// GameObject   加载获得的资源
         /// </summary>
-        public Action<GameObject> Callback = null;
+        public Action<string, GameObject> Callback = null;
 
         public LoadSourceEntity()
         {

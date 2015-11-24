@@ -33,22 +33,6 @@ namespace LGame.LSource
         }
 
         /// <summary>
-        /// 获得资源实体类
-        /// 
-        /// 区分 Android， iphone， untiy 
-        /// 
-        /// 默认 unity
-        /// </summary>
-        /// <param name="resName">资源名字</param>
-        /// <param name="bundPath">加载AssetBundle完整路径 </param>
-        /// <param name="type">资源类型</param>
-        /// <returns></returns>
-        private static LoadSourceEntity LoadEnitySource(string resName, string bundPath, Type type)
-        {
-            return LCSLoadSource.LoadBuildSources(resName, bundPath, type);
-        }
-
-        /// <summary>
         /// 异步加载资源回调
         /// </summary>
         /// <param name="entity"></param>
@@ -60,7 +44,7 @@ namespace LGame.LSource
                 return;
             }
             if (entity.Callback == null) return;
-            entity.Callback(entity.LoadObj);
+            entity.Callback(entity.ResName, entity.LoadObj);
             Add<LCSManageSource>(entity.ResName, entity);
         }
 
@@ -86,7 +70,7 @@ namespace LGame.LSource
         {
             LoadSourceEntity entity = null;
             if (!TryFind<LCSManageSource>(resName, out entity)) return entity.LoadObj;
-            entity = LoadEnitySource(resName, bundPath, type);
+            entity = LCSLoadSource.LoadSource(resName, bundPath, type);
             if (entity == null) return null;
             Add<LCSManageSource>(resName, entity);
             return entity.LoadObj;
@@ -98,7 +82,7 @@ namespace LGame.LSource
         /// <param name="resName">资源名字，不带后缀, 资源名字唯一</param>
         /// <param name="bundPath">资源完成路径(打包后的路径)</param>
         /// <param name="callback"></param>
-        public static void AsyncLoadSource(string resName, string bundPath, Action<GameObject> callback)
+        public static void AsyncLoadSource(string resName, string bundPath, Action<string, GameObject> callback)
         {
             AsyncLoadSource(resName, bundPath, null, callback);
         }
@@ -111,7 +95,7 @@ namespace LGame.LSource
         /// <param name="type">资源加载类型</param>
         /// <param name="callback">加载完成回调</param>
         /// <returns></returns>
-        public static void AsyncLoadSource(string resName, string bundPath, Type type, Action<GameObject> callback)
+        public static void AsyncLoadSource(string resName, string bundPath, Type type, Action<string, GameObject> callback)
         {
             LoadSourceEntity entity = new LoadSourceEntity()
             {

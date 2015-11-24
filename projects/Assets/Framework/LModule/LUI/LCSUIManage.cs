@@ -122,6 +122,18 @@ namespace LGame.LUI
         /// <param name="winPath">界面加载路径</param>
         public static void OpenWindow(string winName, string winPath)
         {
+            if (string.IsNullOrEmpty(winName))
+            {
+                LCSConsole.WriteError("打开的界面名字为空! winName = string.Empty");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(winPath))
+            {
+                LCSConsole.WriteError("加载资源 AssetBundle 文件路径为空! bundlePath = string.Empty");
+                return;
+            }
+
             LAUIBehaviour win = null;
             if (TryFind<LCSUIManage>(winName, out win)) return;
 
@@ -154,14 +166,43 @@ namespace LGame.LUI
         {
             LAUIBehaviour win = null;
             if (TryFind<LCSUIManage>(winName, out win)) return;
+
+            // 当前最高的界面失去焦点
+            LAUIBehaviour topWin = TopWindow();
+            if (topWin != null) topWin.OnLostFocus();
+
+            LCSManageSource.AsyncLoadSource(winName, winPath, AsyncOpenWindowCallback);
         }
 
         /// <summary>
         /// 异步打开界面回调
         /// </summary>
-        public static void AsyncOpenWindowCallback()
+        public static void AsyncOpenWindowCallback(string winName, GameObject go)
         {
+            if (string.IsNullOrEmpty(winName))
+            {
+                LCSConsole.WriteError("打开的界面名字为空! winName = string.Empty");
+                return;
+            }
 
+            if (go == null)
+            {
+                LCSConsole.WriteError("资源加载失败!");
+                return;
+            }
+
+            GameObject ui = GameObject.Instantiate(go) as GameObject;
+            if (ui == null) return;
+            LCSCompHelper.InitTransform(go, UIRoot);
+            LAUIBehaviour win = LCSCompHelper.GetComponent<LAUIBehaviour>(ui);
+
+            int depth = 1;
+            LAUIBehaviour topWin = TopWindow();
+            if (topWin != null) depth = topWin.WinDepth + LCSConfig.DepthSpan;
+
+            // 初始化当前界面
+            win.OnOpen(depth, winName);
+            Add<LCSUIManage>(winName, win);
         }
 
         /// <summary>

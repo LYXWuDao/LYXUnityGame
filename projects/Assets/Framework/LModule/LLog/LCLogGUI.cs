@@ -30,6 +30,11 @@ namespace LGame.LDebug
         private static LCLogGUI _instance = null;
 
         /// <summary>
+        /// 用于线程锁
+        /// </summary>
+        private static object _lock = new object();
+
+        /// <summary>
         /// 创建 gui 日志输出实例
         /// </summary>
         public static LCLogGUI Instance
@@ -37,9 +42,15 @@ namespace LGame.LDebug
             get
             {
                 if (_instance != null) return _instance;
-                GameObject create = LCSCompHelper.Create("_GUI Debug");
-                _instance = LCSCompHelper.FindComponet<LCLogGUI>(create);
-                DontDestroyOnLoad(create);
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        GameObject create = LCSCompHelper.Create("_GUI Debug");
+                        _instance = LCSCompHelper.FindComponet<LCLogGUI>(create);
+                        DontDestroyOnLoad(create);
+                    }
+                }
                 return _instance;
             }
         }

@@ -17,12 +17,21 @@ namespace LGame.LDebug
 
         private static LCLogGUI _logGui = null;
 
+        private static object _lock = new object();
+
         private static LCLogGUI Instance
         {
             get
             {
                 if (_logGui != null) return _logGui;
-                return (_logGui = LCLogGUI.Instance);
+                lock (_lock)
+                {
+                    if (_logGui == null)
+                    {
+                        _logGui = LCLogGUI.Instance;
+                    }
+                }
+                return _logGui;
             }
         }
 

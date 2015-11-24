@@ -17,7 +17,7 @@ namespace LGame.LSource
 {
 
     public static class LCSLoadSource
-    {   
+    {
 
         /// <summary>
         /// 导入资源
@@ -32,7 +32,7 @@ namespace LGame.LSource
         /// 例如：Scenes/battleScene.scene
         /// </param>
         /// <returns>加载的资源</returns>
-        public static GameObject LoadResources(string name)
+        private static GameObject LoadResources(string name)
         {
             return LoadResources(name, typeof(GameObject));
         }
@@ -56,7 +56,7 @@ namespace LGame.LSource
         /// return null : 资源名字为空，或者资源不存在， 或者资源类型不对
         /// 
         /// </returns>
-        public static GameObject LoadResources(string name, Type type)
+        private static GameObject LoadResources(string name, Type type)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -77,7 +77,7 @@ namespace LGame.LSource
         /// </summary>
         /// <param name="resName">加载的资源名字</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadStreamingSources(string resName)
+        private static LoadSourceEntity LoadStreamingSources(string resName)
         {
             return LoadStreamingSources(resName, "");
         }
@@ -88,7 +88,7 @@ namespace LGame.LSource
         /// <param name="resName">加载的资源名字</param>
         /// <param name="bundPath">导入 AssetBundle 路径</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadStreamingSources(string resName, string bundPath)
+        private static LoadSourceEntity LoadStreamingSources(string resName, string bundPath)
         {
             return LoadStreamingSources(resName, bundPath, null);
         }
@@ -99,7 +99,7 @@ namespace LGame.LSource
         /// <param name="resName">加载的资源名字</param>
         /// <param name="type">资源的类型</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadStreamingSources(string resName, Type type)
+        private static LoadSourceEntity LoadStreamingSources(string resName, Type type)
         {
             return LoadStreamingSources(resName, "", type);
         }
@@ -111,7 +111,7 @@ namespace LGame.LSource
         /// <param name="bundPath">Streaming 下文件夹  如： UI</param>
         /// <param name="type">资源的类型</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadStreamingSources(string resName, string bundPath, Type type)
+        private static LoadSourceEntity LoadStreamingSources(string resName, string bundPath, Type type)
         {
             if (type == null) type = typeof(GameObject);
             if (string.IsNullOrEmpty(bundPath)) bundPath = resName;
@@ -124,7 +124,7 @@ namespace LGame.LSource
         /// </summary>
         /// <param name="resName">加载的资源名字</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadBuildSources(string resName)
+        private static LoadSourceEntity LoadBuildSources(string resName)
         {
             return LoadBuildSources(resName, "");
         }
@@ -135,7 +135,7 @@ namespace LGame.LSource
         /// <param name="resName">加载的资源名字</param>
         /// <param name="bundPath">导入 AssetBundle 路径</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadBuildSources(string resName, string bundPath)
+        private static LoadSourceEntity LoadBuildSources(string resName, string bundPath)
         {
             return LoadBuildSources(resName, bundPath, null);
         }
@@ -146,7 +146,7 @@ namespace LGame.LSource
         /// <param name="resName">加载的资源名字</param>
         /// <param name="type">资源的类型</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadBuildSources(string resName, Type type)
+        private static LoadSourceEntity LoadBuildSources(string resName, Type type)
         {
             return LoadBuildSources(resName, "", type);
         }
@@ -158,7 +158,7 @@ namespace LGame.LSource
         /// <param name="bundPath">导入 AssetBundle 路径</param>
         /// <param name="type">资源的类型</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadBuildSources(string resName, string bundPath, Type type)
+        private static LoadSourceEntity LoadBuildSources(string resName, string bundPath, Type type)
         {
             if (type == null) type = typeof(GameObject);
             if (string.IsNullOrEmpty(bundPath)) bundPath = resName;
@@ -174,7 +174,7 @@ namespace LGame.LSource
         /// <param name="bundPath">导入 AssetBundle 路径 </param>
         /// <param name="resName"> 从 AssetBundle 中导入的资源名  </param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadBinarySources(string bundPath, string resName)
+        private static LoadSourceEntity LoadBinarySources(string bundPath, string resName)
         {
             return LoadBinarySources(bundPath, resName, typeof(GameObject));
         }
@@ -188,7 +188,7 @@ namespace LGame.LSource
         /// <param name="resName"> 从 AssetBundle 中导入的资源名  </param>
         /// <param name="type">加载资源的类型</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadBinarySources(string bundPath, string resName, Type type)
+        private static LoadSourceEntity LoadBinarySources(string bundPath, string resName, Type type)
         {
             if (string.IsNullOrEmpty(resName))
             {
@@ -240,7 +240,7 @@ namespace LGame.LSource
         /// <param name="resName">加载的资源名字</param>
         /// <param name="type">资源类型</param>
         /// <returns></returns>
-        public static GameObject LoadBundleSources(AssetBundle bundle, string resName, Type type)
+        private static GameObject LoadBundleSources(AssetBundle bundle, string resName, Type type)
         {
             if (bundle == null)
             {
@@ -260,6 +260,23 @@ namespace LGame.LSource
                 return null;
             }
             return retobj as GameObject;
+        }
+
+        /// <summary>
+        /// 同步加载资源
+        /// 
+        /// 区分 Android， iphone， untiy 
+        /// 
+        /// 默认 unity
+        /// 
+        /// </summary>
+        /// <param name="resName">资源名字</param>
+        /// <param name="bundPath">资源完整路径</param>
+        /// <param name="type">加载资源的类型</param>
+        /// <returns></returns>
+        public static LoadSourceEntity LoadSource(string resName, string bundPath, Type type)
+        {
+            return LoadBuildSources(resName, bundPath, type);
         }
 
     }

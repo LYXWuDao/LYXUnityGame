@@ -15,6 +15,8 @@ namespace LGame.LSource
      * 
      * 异步加载资源  
      * 
+     * 使用文件流，二进制方式进行加载
+     * 
      * 例如： 模型，界面，图片，声音，特效 等.
      * 
      * 使用单例模式
@@ -36,6 +38,9 @@ namespace LGame.LSource
 
         private static LCAsyncLoadSource _instance;
 
+        /// <summary>
+        /// 用于 lock 
+        /// </summary>
         private static object _lock = new object();
 
         /// <summary>
@@ -91,6 +96,57 @@ namespace LGame.LSource
             entity.LoadObj = retobj as GameObject;
             entity.Bundle = assetBundle;
             callback(entity);
+        }
+
+        /// <summary>
+        /// 异步加载资源
+        /// 
+        /// 默认加载路径和 resName 相同
+        /// 默认加载 gameObject
+        /// </summary>
+        /// <param name="resName">资源名字</param>
+        /// <param name="finishCall">加载完成后回调创建类(用户自定义创建位置)</param>
+        /// <param name="callback">异步加载完成回调资源管理类</param>
+        public void LoadSource(string resName, Action<string, GameObject> finishCall,
+            Action<LoadSourceEntity> callback)
+        {
+            LoadSource(resName, resName, null, finishCall, callback);
+        }
+
+        /// <summary>
+        /// 异步加载资源
+        /// 
+        /// 默认加载 gameObject
+        /// </summary>
+        /// <param name="resName">资源名字</param>
+        /// <param name="bundPath">资源完整路径</param>
+        /// <param name="finishCall">加载完成后回调创建类(用户自定义创建位置)</param>
+        /// <param name="callback">异步加载完成回调资源管理类</param>
+        public void LoadSource(string resName, string bundPath, Action<string, GameObject> finishCall,
+            Action<LoadSourceEntity> callback)
+        {
+            LoadSource(resName, bundPath, null, finishCall, callback);
+        }
+
+        /// <summary>
+        /// 异步加载资源
+        /// </summary>
+        /// <param name="resName">资源名字</param>
+        /// <param name="bundPath">资源完整路径</param>
+        /// <param name="type">资源的类型</param>
+        /// <param name="finishCall">加载完成后回调创建类(用户自定义创建位置)</param>
+        /// <param name="callback">异步加载完成回调资源管理类</param>
+        public void LoadSource(string resName, string bundPath, Type type, Action<string, GameObject> finishCall,
+            Action<LoadSourceEntity> callback)
+        {
+            LoadSourceEntity entity = new LoadSourceEntity()
+            {
+                ResName = resName,
+                BundlePath = bundPath,
+                BundleType = type,
+                Callback = finishCall,
+            };
+            LoadSource(entity, callback);
         }
 
         /// <summary>
