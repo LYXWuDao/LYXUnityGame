@@ -71,6 +71,37 @@ namespace LGame.LUI
         }
 
         /// <summary>
+        /// 异步打开界面回调
+        /// </summary>
+        private static void AsyncOpenWindowCallback(string winName, GameObject go)
+        {
+            if (string.IsNullOrEmpty(winName))
+            {
+                LCSConsole.WriteError("打开的界面名字为空! winName = string.Empty");
+                return;
+            }
+
+            if (go == null)
+            {
+                LCSConsole.WriteError("资源加载失败!");
+                return;
+            }
+
+            GameObject ui = GameObject.Instantiate(go) as GameObject;
+            if (ui == null) return;
+            LCSCompHelper.InitTransform(go, UIRoot);
+            LAUIBehaviour win = LCSCompHelper.GetComponent<LAUIBehaviour>(ui);
+
+            int depth = 1;
+            LAUIBehaviour topWin = TopWindow();
+            if (topWin != null) depth = topWin.WinDepth + LCSConfig.DepthSpan;
+
+            // 初始化当前界面
+            win.OnOpen(depth, winName);
+            Add<LCSUIManage>(winName, win);
+        }
+
+        /// <summary>
         /// 得到 2d 主摄像机
         /// </summary>
         public static UICamera UIMainCamera
@@ -172,37 +203,6 @@ namespace LGame.LUI
             if (topWin != null) topWin.OnLostFocus();
 
             LCSManageSource.AsyncLoadSource(winName, winPath, AsyncOpenWindowCallback);
-        }
-
-        /// <summary>
-        /// 异步打开界面回调
-        /// </summary>
-        public static void AsyncOpenWindowCallback(string winName, GameObject go)
-        {
-            if (string.IsNullOrEmpty(winName))
-            {
-                LCSConsole.WriteError("打开的界面名字为空! winName = string.Empty");
-                return;
-            }
-
-            if (go == null)
-            {
-                LCSConsole.WriteError("资源加载失败!");
-                return;
-            }
-
-            GameObject ui = GameObject.Instantiate(go) as GameObject;
-            if (ui == null) return;
-            LCSCompHelper.InitTransform(go, UIRoot);
-            LAUIBehaviour win = LCSCompHelper.GetComponent<LAUIBehaviour>(ui);
-
-            int depth = 1;
-            LAUIBehaviour topWin = TopWindow();
-            if (topWin != null) depth = topWin.WinDepth + LCSConfig.DepthSpan;
-
-            // 初始化当前界面
-            win.OnOpen(depth, winName);
-            Add<LCSUIManage>(winName, win);
         }
 
         /// <summary>
