@@ -76,6 +76,44 @@ namespace LGame.LCommon
         Error = 3,
     }
 
+    /// <summary>
+    /// 资源加载类型
+    /// </summary>
+    public enum LoadType
+    {
+        /// <summary>
+        /// 所有的类型
+        /// </summary>
+        Object = 1,
+
+        /// <summary>
+        /// 一般模式
+        /// 
+        /// prefab： 界面，模型
+        /// </summary>
+        GameObject = 2,
+
+        /// <summary>
+        /// 贴图
+        /// </summary>
+        Texture2D = 3,
+
+        /// <summary>
+        /// ngui 图集
+        /// </summary>
+        UIAtlas = 4,
+
+        /// <summary>
+        /// 加载音频
+        /// </summary>
+        AudioClip = 5,
+
+        /// <summary>
+        /// 加载视频
+        /// </summary>
+        AudioSource = 6,
+    }
+
     #endregion
 
     #region 框架内 公用实体
@@ -110,14 +148,22 @@ namespace LGame.LCommon
         public string BundlePath = string.Empty;
 
         /// <summary>
-        /// 加载资源的类型
+        /// 资源加载类型
         /// </summary>
-        public Type BundleType = null;
+        public LoadType Type = LoadType.Object;
 
         /// <summary>
         /// 加载的资源
         /// </summary>
-        public GameObject LoadObj = null;
+        public UnityEngine.Object LoadObj = null;
+
+        /// <summary>
+        /// 回调函数
+        /// 
+        /// 异步加载资源回调
+        /// Object  加载获得的资源
+        /// </summary>
+        public Action<string, UnityEngine.Object> CallObject = null;
 
         /// <summary>
         /// 回调函数
@@ -125,7 +171,39 @@ namespace LGame.LCommon
         /// 异步加载资源回调
         /// GameObject   加载获得的资源
         /// </summary>
-        public Action<string, GameObject> Callback = null;
+        public Action<string, GameObject> CallGameObject = null;
+
+        /// <summary>
+        /// 回调函数
+        /// 
+        /// 异步加载资源回调
+        /// Texture2D   加载获得的资源
+        /// </summary>
+        public Action<string, Texture2D> CallTexture = null;
+
+        /// <summary>
+        /// 回调函数
+        /// 
+        /// 异步加载资源回调
+        /// UIAtlas   加载获得的资源
+        /// </summary>
+        public Action<string, UIAtlas> CallUIAtlas = null;
+
+        /// <summary>
+        /// 回调函数
+        /// 
+        /// 异步加载资源回调
+        /// AudioClip   加载获得的资源
+        /// </summary>
+        public Action<string, AudioClip> CallAudioClip = null;
+
+        /// <summary>
+        /// 回调函数
+        /// 
+        /// 异步加载资源回调
+        /// AudioSource   加载获得的资源
+        /// </summary>
+        public Action<string, AudioSource> CallAudioSource = null;
 
         public LoadSourceEntity()
         {
@@ -288,7 +366,7 @@ namespace LGame.LCommon
         public virtual void Add(TKey key, TValue value)
         {
             TValue old;
-            if (DicEntitys.TryGetValue(key, out old)) return;
+            if (!DicEntitys.ContainsKey(key) || DicEntitys.TryGetValue(key, out old)) return;
             DicEntitys.Add(key, value);
             Values.Add(value);
             Keys.Add(key);
@@ -304,7 +382,7 @@ namespace LGame.LCommon
         public virtual void Modify(TKey key, TValue value)
         {
             TValue old;
-            if (!DicEntitys.TryGetValue(key, out old)) return;
+            if (!DicEntitys.ContainsKey(key) || !DicEntitys.TryGetValue(key, out old)) return;
             DicEntitys[key] = value;
             var index = Values.IndexOf(old);
             Values[index] = value;
@@ -317,6 +395,7 @@ namespace LGame.LCommon
         /// <returns></returns>
         public virtual TValue Find(TKey key)
         {
+            if (!DicEntitys.ContainsKey(key)) return default(TValue);
             TValue old;
             DicEntitys.TryGetValue(key, out old);
             return old;
@@ -383,7 +462,7 @@ namespace LGame.LCommon
         public virtual TValue Remove(TKey key)
         {
             TValue result;
-            if (!TryFind(key, out result)) return default(TValue);
+            if (!DicEntitys.ContainsKey(key) || !TryFind(key, out result)) return default(TValue);
             DicEntitys.Remove(key);
             return result;
         }

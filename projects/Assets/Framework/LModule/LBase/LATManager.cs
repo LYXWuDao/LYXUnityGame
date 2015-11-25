@@ -44,7 +44,7 @@ namespace LGame.LBase
         /// <returns></returns>
         private static bool TryFind<T>(out LCTManagerEntity<TValue> value)
         {
-            return null == (value = Find<T>());
+            return null != (value = Find<T>());
         }
 
         /// <summary>
@@ -70,6 +70,7 @@ namespace LGame.LBase
         /// <returns>返回查找到的数据</returns>
         public static TValue Find<T>(string key)
         {
+            if (string.IsNullOrEmpty(key)) return default(TValue);
             LCTManagerEntity<TValue> entity;
             return !TryFind<T>(out entity) ? default(TValue) : entity.Find(key);
         }
@@ -83,7 +84,7 @@ namespace LGame.LBase
         /// <returns></returns>
         public static bool TryFind<T>(string key, out TValue value)
         {
-            return null == (value = Find<T>(key));
+            return null != (value = Find<T>(key));
         }
 
         /// <summary>

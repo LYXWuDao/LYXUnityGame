@@ -1,4 +1,5 @@
-﻿using LGame.LBehaviour;
+﻿using System.Collections.Generic;
+using LGame.LBehaviour;
 using LGame.LCommon;
 using LGame.LDebug;
 using LGame.LSource;
@@ -18,7 +19,11 @@ public class LCTestFramework : LABehaviour
     public override void Awake()
     {
 
-        LCSUIManage.AsyncOpenWindow("uiBattlePanel", LCSPathHelper.UnityBuildRootPath() + "UI/uiBattlePanel.data");
+        Dictionary<string, string> dic = new Dictionary<string, string>();
+
+        string value;
+        dic.TryGetValue(string.Empty, out value);
+        Debug.Log(value);
 
     }
 

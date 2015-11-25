@@ -46,7 +46,7 @@ namespace LGame.LUI
                 LCSConsole.WriteError("加载资源 AssetBundle 文件路径为空! bundlePath = " + winPath);
                 return null;
             }
-            GameObject ui = LCSManageSource.LoadSource(winName, winPath, typeof(GameObject));
+            GameObject ui = LCSManageSource.LoadSource(winName, winPath);
             if (ui == null)
             {
                 LCSConsole.WriteError("加载的资源不存在!");

@@ -18,60 +18,6 @@ namespace LGame.LSource
 
     public static class LCSLoadSource
     {
-
-        /// <summary>
-        /// 导入资源
-        /// 
-        /// 直接加载  Resources 文件夹下资源
-        /// </summary>
-        /// <param name="name">
-        /// 
-        /// 资源名字
-        /// 
-        /// Resources夹下路径
-        /// 例如：Scenes/battleScene.scene
-        /// </param>
-        /// <returns>加载的资源</returns>
-        private static GameObject LoadResources(string name)
-        {
-            return LoadResources(name, typeof(GameObject));
-        }
-
-        /// <summary>
-        /// 导入资源
-        /// 
-        /// 直接加载  Resources 文件夹下资源
-        /// </summary>
-        /// <param name="name">
-        /// 
-        /// 资源名字
-        /// 
-        /// Resources夹下路径
-        /// 例如：Scenes/battleScene.scene
-        /// </param>
-        /// <param name="type">资源类型</param>
-        /// <returns>
-        /// 加载的资源
-        /// 
-        /// return null : 资源名字为空，或者资源不存在， 或者资源类型不对
-        /// 
-        /// </returns>
-        private static GameObject LoadResources(string name, Type type)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                LCSConsole.WriteError("导入资源名字为空,name = " + name);
-                return null;
-            }
-            UnityEngine.Object load = Resources.Load(name, type);
-            if (load == null)
-            {
-                LCSConsole.WriteError("导入资源不存在！！");
-                return null;
-            }
-            return load as GameObject;
-        }
-
         /// <summary>
         /// 加载 Assets Streaming 文件夹下资源
         /// </summary>
@@ -79,29 +25,7 @@ namespace LGame.LSource
         /// <returns></returns>
         private static LoadSourceEntity LoadStreamingSources(string resName)
         {
-            return LoadStreamingSources(resName, "");
-        }
-
-        /// <summary>
-        /// 加载 Assets Streaming 文件夹下资源
-        /// </summary>
-        /// <param name="resName">加载的资源名字</param>
-        /// <param name="bundPath">导入 AssetBundle 路径</param>
-        /// <returns></returns>
-        private static LoadSourceEntity LoadStreamingSources(string resName, string bundPath)
-        {
-            return LoadStreamingSources(resName, bundPath, null);
-        }
-
-        /// <summary>
-        /// 加载 Assets Streaming 文件夹下资源
-        /// </summary>
-        /// <param name="resName">加载的资源名字</param>
-        /// <param name="type">资源的类型</param>
-        /// <returns></returns>
-        private static LoadSourceEntity LoadStreamingSources(string resName, Type type)
-        {
-            return LoadStreamingSources(resName, "", type);
+            return LoadStreamingSources(resName, string.Empty);
         }
 
         /// <summary>
@@ -111,12 +35,11 @@ namespace LGame.LSource
         /// <param name="bundPath">Streaming 下文件夹  如： UI</param>
         /// <param name="type">资源的类型</param>
         /// <returns></returns>
-        private static LoadSourceEntity LoadStreamingSources(string resName, string bundPath, Type type)
+        private static LoadSourceEntity LoadStreamingSources(string resName, string bundPath)
         {
-            if (type == null) type = typeof(GameObject);
             if (string.IsNullOrEmpty(bundPath)) bundPath = resName;
             string path = LCSPathHelper.UnityStreamingSourcePath() + bundPath;
-            return LoadBinarySources(path, resName, type);
+            return LoadBinarySources(path, resName);
         }
 
         /// <summary>
@@ -126,7 +49,7 @@ namespace LGame.LSource
         /// <returns></returns>
         private static LoadSourceEntity LoadBuildSources(string resName)
         {
-            return LoadBuildSources(resName, "");
+            return LoadBuildSources(resName, string.Empty);
         }
 
         /// <summary>
@@ -134,49 +57,13 @@ namespace LGame.LSource
         /// </summary>
         /// <param name="resName">加载的资源名字</param>
         /// <param name="bundPath">导入 AssetBundle 路径</param>
+        /// <param name="type">资源的类型</param>
         /// <returns></returns>
         private static LoadSourceEntity LoadBuildSources(string resName, string bundPath)
         {
-            return LoadBuildSources(resName, bundPath, null);
-        }
-
-        /// <summary>
-        /// 加载 Assets SourceAssets 文件夹下资源
-        /// </summary>
-        /// <param name="resName">加载的资源名字</param>
-        /// <param name="type">资源的类型</param>
-        /// <returns></returns>
-        private static LoadSourceEntity LoadBuildSources(string resName, Type type)
-        {
-            return LoadBuildSources(resName, "", type);
-        }
-
-        /// <summary>
-        /// 加载 Assets SourceAssets 文件夹下资源
-        /// </summary>
-        /// <param name="resName">加载的资源名字</param>
-        /// <param name="bundPath">导入 AssetBundle 路径</param>
-        /// <param name="type">资源的类型</param>
-        /// <returns></returns>
-        private static LoadSourceEntity LoadBuildSources(string resName, string bundPath, Type type)
-        {
-            if (type == null) type = typeof(GameObject);
             if (string.IsNullOrEmpty(bundPath)) bundPath = resName;
             string path = LCSPathHelper.UnityBuildRootPath() + bundPath;
-            return LoadBinarySources(path, resName, type);
-        }
-
-        /// <summary>
-        /// 导入资源
-        /// 
-        /// 以二进制加载
-        /// </summary>
-        /// <param name="bundPath">导入 AssetBundle 路径 </param>
-        /// <param name="resName"> 从 AssetBundle 中导入的资源名  </param>
-        /// <returns></returns>
-        private static LoadSourceEntity LoadBinarySources(string bundPath, string resName)
-        {
-            return LoadBinarySources(bundPath, resName, typeof(GameObject));
+            return LoadBinarySources(path, resName);
         }
 
         /// <summary>
@@ -188,7 +75,7 @@ namespace LGame.LSource
         /// <param name="resName"> 从 AssetBundle 中导入的资源名  </param>
         /// <param name="type">加载资源的类型</param>
         /// <returns></returns>
-        private static LoadSourceEntity LoadBinarySources(string bundPath, string resName, Type type)
+        private static LoadSourceEntity LoadBinarySources(string bundPath, string resName)
         {
             if (string.IsNullOrEmpty(resName))
             {
@@ -217,7 +104,7 @@ namespace LGame.LSource
                 return null;
             }
 
-            UnityEngine.Object retobj = bundle.Load(resName, type);
+            UnityEngine.Object retobj = bundle.Load(resName);
             if (retobj == null)
             {
                 LCSConsole.WriteError("资源 AssetBundle 中不存在 resName = " + resName);
@@ -226,7 +113,7 @@ namespace LGame.LSource
 
             return new LoadSourceEntity
             {
-                LoadObj = retobj as GameObject,
+                LoadObj = retobj,
                 Bundle = bundle,
                 BundlePath = bundPath,
                 ResName = resName
@@ -234,32 +121,43 @@ namespace LGame.LSource
         }
 
         /// <summary>
-        /// 直接从 AssetBundle 中加载资源
+        /// 同步导入资源
+        /// 
+        /// 直接加载  Resources 文件夹下资源
         /// </summary>
-        /// <param name="bundle">AssetBundle</param>
-        /// <param name="resName">加载的资源名字</param>
-        /// <param name="type">资源类型</param>
-        /// <returns></returns>
-        private static GameObject LoadBundleSources(AssetBundle bundle, string resName, Type type)
+        /// <param name="resPath">
+        /// 
+        /// 资源名字
+        /// 
+        /// Resources夹下路径
+        /// 例如：Scenes/battleScene.scene
+        /// </param>
+        /// <returns>
+        /// 加载的资源
+        /// 
+        /// return null : 资源名字为空，或者资源不存在， 或者资源类型不对
+        /// 
+        /// </returns>
+        private static LoadSourceEntity LoadResources(string resPath)
         {
-            if (bundle == null)
+            if (string.IsNullOrEmpty(resPath))
             {
-                LCSConsole.WriteError("资源 AssetBundle 不存在");
+                LCSConsole.WriteError("导入资源名字为空,resPath = string.Empty");
                 return null;
             }
-            if (string.IsNullOrEmpty(resName))
+            UnityEngine.Object load = Resources.Load(resPath);
+            if (load == null)
             {
-                LCSConsole.WriteError("导入资源名字为空,resName = " + resName);
+                LCSConsole.WriteError("导入资源不存在！！");
                 return null;
             }
-            if (type == null) type = typeof(GameObject);
-            UnityEngine.Object retobj = bundle.Load(resName, type);
-            if (retobj == null)
+            return new LoadSourceEntity
             {
-                LCSConsole.WriteError("资源 AssetBundle 中不存在 resName = " + resName);
-                return null;
-            }
-            return retobj as GameObject;
+                ResName = resPath,
+                BundlePath = resPath,
+                LoadObj = load,
+                Bundle = null
+            };
         }
 
         /// <summary>
@@ -274,9 +172,9 @@ namespace LGame.LSource
         /// <param name="bundPath">资源完整路径</param>
         /// <param name="type">加载资源的类型</param>
         /// <returns></returns>
-        public static LoadSourceEntity LoadSource(string resName, string bundPath, Type type)
+        public static LoadSourceEntity LoadSource(string resName, string bundPath)
         {
-            return LoadBuildSources(resName, bundPath, type);
+            return LoadBuildSources(resName, bundPath);
         }
 
     }
